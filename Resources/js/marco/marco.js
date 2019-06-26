@@ -39,7 +39,7 @@ function cargar_menus() {
     var _html = '';
     for (let i = 0; i < MENUS_OP.length; i++) {
         const element = MENUS_OP[i];
-        _html += '<div class="option-menu-item" onclick="activar_menu(this,\'' + element.item + '\')">' +
+        _html += '<div class="option-menu-item " onclick="activar_menu(this,\'' + element.item + '\')">' +
             '<a>' + element.item + ' </a>' +
             '<i class="fas fa-chevron-right"></i>' +
             '</div>';
@@ -76,10 +76,13 @@ function activar_menu(_this, idMenu) {
         var _html = renderizar_sub_menu(idMenu);
 
         $(_this).after(_html);
+
+       
     } else {
         $(_this).removeClass('active-option');
-        $('.'+idMenu.replace(/ /g, "")).remove();
+        $('.' + idMenu.replace(/ /g, "")).remove();
         $(_this).find('i').removeClass('fa-chevron-down').addClass('fa-chevron-right');
+        
     }
 
 }
