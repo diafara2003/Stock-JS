@@ -21,7 +21,7 @@ header h5 {
 
 .header-title {
     margin-top: 0;
-    padding: 15px;
+    padding: 10px;
 }
 
 .nav-header i {
@@ -156,6 +156,7 @@ ESTILOS MENU
 
 .option-menu-item:hover {
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    cursor: pointer;
 }
 
 @media (max-width: 950px) {
@@ -177,6 +178,13 @@ ESTILOS MENU
     }
     .footer {
         position: initial;
+        width: 99%;
+    }
+}
+
+
+@media (max-width: 850px) {
+    .menu{
         width: 99%;
     }
 }
