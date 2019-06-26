@@ -11,6 +11,8 @@ body {
 header {
     width: 100%;
     color: white;
+    position: fixed;
+    z-index: 99;
 }
 
 header h5 {
@@ -22,20 +24,18 @@ header h5 {
     padding: 15px;
 }
 
+.nav-header i {
+    font-size: 25px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
 .d-flex {
     display: flex;
 }
 
 .border-bottom {
     border-bottom: 1px solid #ebebeb;
-}
-
-.border-top {
-    border-top: 1px solid #e65100;
-}
-
-.fixed-top {
-    /* position: fixed; */
 }
 
 .p-3 {
@@ -52,9 +52,7 @@ header h5 {
 
 .login-container {
     display: flex;
-    margin-top: 40px;
     justify-content: space-between;
-    
     padding: 20px;
     /* position: absolute; */
 }
@@ -62,11 +60,13 @@ header h5 {
 .form-login {
     width: 500px;
     padding: 10px;
-    border:1px solid  #ebebeb;
+    border: 1px solid #ebebeb;
 }
 
 .header-color {
     background: #e65100;
+    color: white;
+    height: 45px;
     width: 100%;
     z-index: 99;
 }
@@ -91,24 +91,28 @@ header h5 {
     text-align: center;
 }
 
+.data-login {
+    margin-top: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
 .footer {
     position: fixed;
     height: 30px;
     width: 100%;
     text-align: center;
     z-index: 999;
-    background-color: white;
+    color: white;
     bottom: 0;
 }
 
 .footer-desc {
+    background: #e65100;
     justify-content: space-around;
     display: flex;
 }
-
-/* .footer div {
-    padding: 10px;
-  } */
 
 i {
     cursor: pointer;
@@ -118,19 +122,61 @@ i {
     color: red;
 }
 
+/*
+ESTILOS MENU
+*/
+
+.menu {
+    position: absolute;
+    width: 200px;
+    height: 100%;
+    border-right: 1px solid #e65100;
+}
+
+.option-menu {
+    margin: 55px 5px 10px 5px;
+}
+
+.option-menu-item {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #ebebeb;
+    margin-bottom: 10px;
+}
+
+.option-menu-item i {
+    margin-top: 5px;
+}
+
+.active-option {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.option-menu-item:hover {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
 @media (max-width: 950px) {
-    .login-container{
+    .data-login {
+        display: block;
+    }
+    .login-container {
         flex-wrap: wrap;
     }
     .noticia-login {
-        width: 100% !important;
+        width: 95% !important;
         margin-bottom: 20px;
         border-bottom: 1px solid #ebebeb;
-        height: auto;
+        height: auto !important;
     }
     .form-login {
-        width: 90vw;
+        width: 95%;
         margin-top: 0px !important;
     }
+    .footer {
+        position: initial;
+        width: 99%;
+    }
 }
-
