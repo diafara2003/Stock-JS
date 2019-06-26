@@ -43,7 +43,7 @@ function cargar_menus() {
             '<a>' + element.item + ' </a>' +
             '<i class="fas fa-chevron-right"></i>' +
             '</div>';
-        // 
+        _html +=renderizar_sub_menu(element.item);
 
     }
 
@@ -56,7 +56,7 @@ function renderizar_sub_menu(idMenu) {
 
     for (let i = 0; i < submenu.length; i++) {
         const element = submenu[i];
-        _html += ' <div class="sub-item-menu ' + idMenu.replace(/ /g, "") + '">' +
+        _html += ' <div class="sub-item-menu ' + idMenu.replace(/ /g, "") + '" style="display:none">' +
             '<div class="option-menu-item">' +
             '<a href="' + element.path + '">' + element.name + '</a>' +
             '</div>' +
@@ -73,14 +73,14 @@ function activar_menu(_this, idMenu) {
         $(_this).addClass('active-option');
         $(_this).find('i').removeClass('fa-chevron-right').addClass('fa-chevron-down');
 
-        var _html = renderizar_sub_menu(idMenu);
-
+       // var _html = renderizar_sub_menu(idMenu);
+       $('.' + idMenu.replace(/ /g, "")).show('slow');
         $(_this).after(_html);
 
        
     } else {
         $(_this).removeClass('active-option');
-        $('.' + idMenu.replace(/ /g, "")).remove();
+        $('.' + idMenu.replace(/ /g, "")).hide('slow');
         $(_this).find('i').removeClass('fa-chevron-down').addClass('fa-chevron-right');
         
     }
