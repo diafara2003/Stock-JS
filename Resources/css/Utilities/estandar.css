@@ -1,0 +1,136 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    margin: 0;
+}
+
+.font-weight-normal {
+    font-weight: 400;
+    color: white;
+}
+
+header {
+    width: 100%;
+    color: white;
+}
+
+header h5 {
+    font-size: 18px;
+}
+
+.header-title {
+    margin-top: 0;
+    padding: 15px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #ebebeb;
+}
+
+.border-top {
+    border-top: 1px solid #e65100;
+}
+
+.fixed-top {
+    /* position: fixed; */
+}
+
+.p-3 {
+    padding: 10px;
+}
+
+.mb-0, .my-0 {
+    margin-bottom: 0;
+}
+
+.border-top {
+    border-top: 1px solid #e65100;
+}
+
+.login-container {
+    display: flex;
+    margin-top: 40px;
+    justify-content: space-between;
+    
+    padding: 20px;
+    /* position: absolute; */
+}
+
+.form-login {
+    width: 500px;
+    padding: 10px;
+    border:1px solid  #ebebeb;
+}
+
+.header-color {
+    background: #e65100;
+    width: 100%;
+    z-index: 99;
+}
+
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.shadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.footer {
+    position: fixed;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+    z-index: 999;
+    background-color: white;
+    bottom: 0;
+}
+
+.footer-desc {
+    justify-content: space-around;
+    display: flex;
+}
+
+/* .footer div {
+    padding: 10px;
+  } */
+
+i {
+    cursor: pointer;
+}
+
+.mensaje-error {
+    color: red;
+}
+
+@media (max-width: 950px) {
+    .login-container{
+        flex-wrap: wrap;
+    }
+    .noticia-login {
+        width: 100% !important;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ebebeb;
+        height: auto;
+    }
+    .form-login {
+        width: 90vw;
+        margin-top: 0px !important;
+    }
+}
+
