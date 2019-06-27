@@ -44,7 +44,7 @@ function eventos_AC(autocomplete_input) {
         }
     });
     autocomplete_input.blur(function () {
-
+        $('.resultAC').remove();
     });
     autocomplete_input.focus(function () {
         ACFocus = $(this);
@@ -76,6 +76,8 @@ function renderizar_busqueda() {
         "position": "fixed",
         "z-index": "999"
     });
+
+
 
 }
 
