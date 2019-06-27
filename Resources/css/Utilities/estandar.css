@@ -21,13 +21,20 @@ header h5 {
 
 .header-title {
     margin-top: 0;
-    padding: 15px;
+    padding: 10px;
+}
+
+.nav-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .nav-header i {
     font-size: 25px;
     cursor: pointer;
-    margin-right: 5px;
+    margin: 7px 0 0 10px;
+    font-size: 25px;
 }
 
 .d-flex {
@@ -69,6 +76,10 @@ header h5 {
     height: 45px;
     width: 100%;
     z-index: 99;
+}
+
+.formulario {
+    padding: 10px;
 }
 
 .shadow-sm {
@@ -131,6 +142,8 @@ ESTILOS MENU
     width: 200px;
     height: 100%;
     border-right: 1px solid #e65100;
+    z-index: 9;
+    background: white;
 }
 
 .option-menu {
@@ -156,6 +169,128 @@ ESTILOS MENU
 
 .option-menu-item:hover {
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    cursor: pointer;
+}
+
+.sub-item-menu {
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+
+.oculto-menu {
+    margin-left: 20px !important;
+    width: 95% !important;
+}
+
+.texto-menu {
+    color: #b9b6b6;
+    margin-top: 20%;
+    margin-left: 40%;
+    font-weight: 400;
+}
+
+h5 {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.container-do-work {
+    margin-top: 65px;
+    position: absolute;
+    z-index: -1;
+    margin-left: 230px;
+    width: 80%;
+}
+
+.container-option {
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    margin-top: 55px;
+    position: absolute;
+    z-index: -1;
+    margin-left: 230px;
+    height: auto;
+    padding: 5px;
+    width: 80%;
+}
+
+/*
+ESTILOS TABLA
+*/
+
+table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse
+}
+
+thead tr {
+    height: 36px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+th {
+    background: #e65100;
+    color: white;
+    padding: 5px;
+    font-weight: 100;
+}
+
+th, td {
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+}
+
+table i {
+    color: #e65100;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.btn-icono {
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    padding: 0;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+}
+
+.btn-icono-primary {
+    background-color: #3f51b5;
+}
+
+.btn-icono-danger {
+    background-color: red;
+}
+
+
+.btn-icono-save {
+    background-color: #e0e0e0;
+    color: rgba(0, 0, 0, 0.87) !important;
+}
+
+
+
+.btn-icono :hover {
+    color: #fff;
+}
+
+.btn-icono span {
+    width: 100%;
+    display: inherit;
+}
+
+.btn-icono i {
+    font-size: 20px;
+    margin-left: 9px;
+}
+
+@media (max-width: 1200px) {
+    .container-do-work {
+        width: 75%;
+    }
 }
 
 @media (max-width: 950px) {
@@ -180,6 +315,28 @@ ESTILOS MENU
         width: 99%;
     }
     .menu {
-    width: 99%;
+        width: 99%;
+    }
+    .container-do-work {
+        margin-left: 10px;
+        width: 95%;
+    }
+    .container-option {
+        margin-left: 10px;
+        width: 95%;
+    }
+}
+
+@media (max-width: 850px) {
+    .menu {
+        width: 99%;
+    }
+    .container-do-work {
+        width: 95%;
+        margin-left: 10px;
+    }
+    .container-option {
+        margin-left: 10px;
+        width: 95%;
     }
 }
