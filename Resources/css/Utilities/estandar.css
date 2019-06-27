@@ -81,6 +81,11 @@ header h5 {
 .formulario {
     padding: 10px;
 }
+.row{
+    display: block;
+    margin:0;
+    
+}
 
 .shadow-sm {
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
@@ -144,6 +149,7 @@ ESTILOS MENU
     border-right: 1px solid #e65100;
     z-index: 9;
     background: white;
+    overflow: auto;
 }
 
 .option-menu {
@@ -277,6 +283,10 @@ table i {
     color: #fff;
 }
 
+.btn-icono-save :hover{
+    color: rgba(0, 0, 0, 0.87) !important;
+}
+
 .btn-icono span {
     width: 100%;
     display: inherit;
@@ -286,6 +296,25 @@ table i {
     font-size: 20px;
     margin-left: 9px;
 }
+
+.modal-header span{
+font-size: 25px;
+}
+
+
+.swal2-content {
+    font-size: 16px !important;
+  }
+  
+  .swal2-styled.swal2-confirm {
+    padding-top: 0px !important;
+  }
+  .swal2-actions button{
+      font-size: 15px !important;
+      background: #e65100 !important;
+      color:white !important;
+  }
+  
 
 @media (max-width: 1200px) {
     .container-do-work {
