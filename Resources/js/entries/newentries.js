@@ -23,11 +23,25 @@ function autocomplete() {
 
 function eventos_AC(autocomplete_input) {
 
-    autocomplete_input.keyup(function () {
+    autocomplete_input.keyup(function (e) {
 
     });
-    autocomplete_input.keydown(function () {
+    autocomplete_input.keydown(function (e) {
+        if (e.keyCode == 40 || e.keyCode == 38) {
+            var ACHover = $('.resultAC').find('div[class*="hover"]');
 
+            if (ACHover != undefined && ACHover.length > 0) {
+                $(ACHover).removeClass('hover');
+                $(ACHover).next().addClass('hover');
+                if (parseInt($(ACHover).attr('id')) >= 9)
+                    $('.resultAC').scrollTop($('.resultAC').scrollTop() + 25);
+                if (parseInt($(ACHover).attr('id')) + 1 == $('.resultAC').find('div[class*="option"]').length) {
+                    $('.resultAC').scrollTop(0);
+                    $($('.resultAC').find('div[class*="option"]')[0]).addClass('hover');
+                }
+            }
+            else { $('.resultAC').find('div').first().addClass('hover'); }
+        }
     });
     autocomplete_input.blur(function () {
 

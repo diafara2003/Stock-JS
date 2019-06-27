@@ -316,6 +316,8 @@ table i {
   color: white !important;
 }
 
+/**
+ESTILOS AUTOCOMPLETE*/
 .resultAC {
   z-index: 999;
   position: fixed;
@@ -323,9 +325,16 @@ table i {
   height: 250px;
   overflow: auto;
 }
-.option{
-    padding: 5px;
-    border-bottom: 1px solid #e0e0e0;
+.option {
+  padding: 5px;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+}
+
+.hover {
+  background-color: #e65100;
+  color: #f7f9f9;
+  cursor: pointer;
 }
 
 @media (max-width: 1200px) {
