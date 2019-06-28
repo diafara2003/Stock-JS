@@ -21,7 +21,7 @@
                 <h5 class="my-0 mr-md-auto font-weight-normal header-title">
                     Software de Inventario
                 </h5>
-                
+
             </div>
         </div>
     </header>
@@ -51,22 +51,21 @@
                     <form>
                         <div class="row">
                             <div>
-                                <label for="exampleEmailInput">Usuario</label>
-                                <input class="u-full-width" type="email" placeholder="test@mailbox.com"
-                                    id="exampleEmailInput">
+                                <label for="txtusuario">Usuario</label>
+                                <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="txtusuario">
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="">
-                                <label for="exampleEmailInput">Contraseña</label>
+                                <label for="txtpassword">Contraseña</label>
                                 <input class="u-full-width" type="password" placeholder="test@mailbox.com"
-                                    id="exampleEmailInput">
+                                    id="txtpassword">
                             </div>
 
                         </div>
                         <div class="u-full-width text-right">
-                            <input class="button-primary" type="submit" value="Ingresar">
+                            <input class="button-primary" type="button" onclick="validarDatos(event)" value="Ingresar">
                         </div>
 
                     </form>
@@ -87,7 +86,10 @@
             </div>
         </div>
     </footer>
-
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="../../Resources/js/commons/inventories-plugin.js"></script>
+    <script src="../../Resources/js/Login/login.js"></script>
 </body>
 
 </html>
