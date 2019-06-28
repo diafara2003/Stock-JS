@@ -1,19 +1,4 @@
-var tags = [
-    { "key": 1, "value": "andres" },
-    { "key": 2, "value": "jhonnatan" },
-    { "key": 3, "value": "antonio" },
-    { "key": 4, "value": "sss" },
-    { "key": 5, "value": "wwww" },
-    { "key": 6, "value": "wwqqq" },
-    { "key": 7, "value": "dsdw" },
-    { "key": 8, "value": "qweqw" },
-    { "key": 9, "value": "andres12" },
-    { "key": 10, "value": "andres4454" },
-    { "key": 11, "value": "andres777" },
-    { "key": 12, "value": "andres55" },
-    { "key": 13, "value": "yyyyy" },
-    { "key": 14, "value": "xxxxxxxx" },
-];
+
 
 let ACFocus = undefined;
 function autocomplete(id_input) {
@@ -28,8 +13,9 @@ function eventos_AC(autocomplete_input) {
 
         if ($(".resultAC").length == 0) {
             var intervalo_key = setInterval(function () {
-                if (autocomplete_input.attr('busqueda')!='true') {
-                    buscarAutocomplete(autocomplete_input, $(this).val);
+                if (autocomplete_input.attr('busqueda') != 'true') {
+                    let value = $(autocomplete_input).val();
+                    buscarAutocomplete(autocomplete_input, value);
                 }
                 clearInterval(intervalo_key);
             }, 500)
@@ -87,7 +73,7 @@ function eventos_AC(autocomplete_input) {
     autocomplete_input.focus(function () {
         if ($('.resultAC').length === 0) {
             ACFocus = $(this);
-            ACFocus.removeAttr('busqueda');            
+            ACFocus.removeAttr('busqueda');
         }
     });
 }
@@ -117,20 +103,27 @@ function last_hover(_search_page, _height_) {
 }
 
 function buscarAutocomplete(autocomplete_input, texto) {
-    renderizar_busqueda(autocomplete_input);
+
+    var _url_service = autocomplete_input.attr('webservice');
+    // _url_service += texto;
+     ConsultaAjax(_url_service, 'GET', function (response) {
+         renderizar_busqueda(data, autocomplete_input);
+     });
+
+   
 }
 
-function renderizar_busqueda(autocomplete_input) {
+function renderizar_busqueda(data, autocomplete_input) {
     var _length = 12;
     var objectField = JSON.parse(autocomplete_input.attr('objectField'));
-    if (tags.length < 12) {
-        _length = tags.length;
+    if (data.length < 12) {
+        _length = data.length;
     }
     var _html = '<div class="resultAC">';
-    if (tags.length > 0) {
+    if (data.length > 0) {
         for (let i = 0; i < _length; i++) {
 
-            const element = tags[i];
+            const element = data[i];
             _html += "<div enumerable='" + i + "' onclick='selected_option_AC(this," + JSON.stringify(element).split("'").join('´').toString().split("&quot;").join('´').toString() + ")' class='option'>" + element[objectField.value] + "</div>";
         }
         _html += '</div>';
@@ -167,7 +160,7 @@ function selected_option_AC(_input, _selected_data) {
             eval(fnSelected + '(' + JSON.stringify(_selected_data) + ',\'' + ACFocus[0].id + '\')');
         }
     }
-    ACFocus.attr('busqueda','true')
+    ACFocus.attr('busqueda', 'true')
 
     $('.resultAC').remove();
 }

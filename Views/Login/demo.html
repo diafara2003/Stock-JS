@@ -17,7 +17,7 @@
 
 <body>
     <div style="width: 300px;margin-left: 40px;margin-top: 50px">
-        <input class="u-full-width autocomplete" Fnselected="selection" type="text" placeholder="nombre del producto"
+        <input class="u-full-width autocomplete" webservice="https://randomuser.me/api/?results=10" Fnselected="selection" type="text" placeholder="nombre del producto"
             id="txtproveedor">
     </div>
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -27,7 +27,7 @@
 
       
         $("#txtproveedor").attr('objectField', JSON.stringify({
-            key: "key", value: "value"
+            key: "id", value: "name"
         }));
         autocomplete('txtproveedor');
 
