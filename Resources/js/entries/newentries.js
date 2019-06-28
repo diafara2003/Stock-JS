@@ -18,12 +18,20 @@ let ACFocus = undefined;
 function autocomplete() {
     let autocomplete_input = $('#txtproveedor');
     eventos_AC(autocomplete_input);
-    renderizar_busqueda();
+
 }
 
 function eventos_AC(autocomplete_input) {
 
     autocomplete_input.keyup(function (e) {
+
+        if ($(".resultAC").length == 0) {
+            var intervalo_key = setInterval(function () {
+
+                buscarAutocomplete(autocomplete_input, $(this).val);
+                clearInterval(intervalo_key);
+            }, 500)
+        }
 
     });
     autocomplete_input.keydown(function (e) {
@@ -51,12 +59,17 @@ function eventos_AC(autocomplete_input) {
     });
 }
 
-function renderizar_busqueda() {
+function buscarAutocomplete(autocomplete_input, texto) {
+    renderizar_busqueda(autocomplete_input);
+}
+
+
+function renderizar_busqueda(autocomplete_input) {
 
     var _html = '<div class="resultAC">';
     for (let i = 0; i < tags.length; i++) {
         const element = tags[i];
-        _html += '<div class="option">' + element + '</div>';
+        _html += '<div onclick="selected_option_AC()" class="option">' + element + '</div>';
     }
     _html += '</div>';
 
@@ -76,9 +89,10 @@ function renderizar_busqueda() {
         "position": "fixed",
         "z-index": "999"
     });
+}
 
-
-
+function selected_option_AC(_input,selected) {
+var d="";
 }
 
 autocomplete();
