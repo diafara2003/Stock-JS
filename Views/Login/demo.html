@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+
+    <link href="../../Resources/css/Utilities/skeleton.css" rel='stylesheet' type='text/css' />
+    <link href="../../Resources/css/Utilities/estandar.css" rel='stylesheet' type='text/css' />
+</head>
+
+<body>
+    <div style="width: 300px;margin-left: 40px;margin-top: 50px">
+        <input class="u-full-width autocomplete" Fnselected="selection" type="text" placeholder="nombre del producto"
+            id="txtproveedor">
+    </div>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="../../Resources/js/commons/inventories-plugin.js"></script>
+    <script src="../../Resources/js/commons/inventories-autocomplete.js"></script>
+    <script>
+
+      
+        $("#txtproveedor").attr('objectField', JSON.stringify({
+            key: "key", value: "value"
+        }));
+        autocomplete('txtproveedor');
+
+        function selection(selected) {
+            $('body').append('<span>' + selected.value + '</span>');
+        }
+    </script>
+</body>
+
+</html>

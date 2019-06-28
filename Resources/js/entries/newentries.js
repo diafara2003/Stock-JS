@@ -52,7 +52,7 @@ function eventos_AC(autocomplete_input) {
         }
     });
     autocomplete_input.blur(function () {
-        $('.resultAC').remove();
+      //  $('.resultAC').remove();
     });
     autocomplete_input.focus(function () {
         ACFocus = $(this);
