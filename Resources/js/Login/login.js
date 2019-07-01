@@ -8,7 +8,18 @@ function validarDatos(e) {
         Swal.fire(
             'inicio de sesión',
             'los campos de usuario y contraseña son obligatorios',
-            'error'
-        )
+            'error')
+    } else {
+        ConsultaAjax(`usuario/validar?user=${usuario}&password=${password}`, 'GET', function (response) {
+            if (response != undefined && response.usuId == 0) {
+                Swal.fire(
+                    'inicio de sesión',
+                    'El usuario no existe, por favor verifique.',
+                    'error')
+            }
+            else {
+                window.location.href = window.location.href.split('Views')[0]+'/Views/marco/inicio.html';
+            }
+        });
     }
 }

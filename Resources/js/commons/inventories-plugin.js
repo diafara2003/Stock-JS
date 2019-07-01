@@ -1,7 +1,7 @@
 Number.prototype.formatMoney = function (places, thousand, decimal, notReverse) {
     places = !isNaN(places = Math.abs(places)) ? places : 2;
 
-    thousand = thousand || ",";
+    thousand =",";
     decimal = decimal || ".";
     var number = this,
         negative = number < 0 ? "-" : "",
@@ -53,7 +53,7 @@ function QuitarFormatoNumerico(_number) {
 function ConsultaAjax(metodo, type, callback, parametros, async, error) {
     $('.progress-bar').show();
     var progressBar = document.getElementById("progressAjax");
-    var _url = window.location.href.split('#')[0].toLowerCase().split('v3')[0] + "V3/ADPRO/api/" + metodo
+    var _url = 'http://localhost/InventoriesAPI/api/' + metodo;
     var req = new XMLHttpRequest();
     if (type == 'GET' || type == 'DELETE') {
         if (parametros != undefined) {

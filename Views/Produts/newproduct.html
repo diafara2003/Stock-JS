@@ -18,9 +18,9 @@
     <header>
         <div class="d-flex fixed-top header-color  shadow-sm">
             <div class="nav-header">
-                    <i class="fas fa-bars bars-header" onclick="mostrar_menu(this)"></i>
+                <i class="fas fa-bars bars-header" onclick="mostrar_menu(this)"></i>
                 <h5 class="my-0 mr-md-auto font-weight-normal header-title">
-                    
+
                     Software de Inventario
                 </h5>
 
@@ -45,45 +45,46 @@
                 <form>
                     <div class="row">
                         <div class="six columns">
-                            <label for="exampleEmailInput">Nombre</label>
-                            <input class="u-full-width" type="text" placeholder="nombre del producto"
-                                id="exampleEmailInput">
+                            <label for="txtnombre">Nombre</label>
+                            <input class="u-full-width" type="text" placeholder="nombre del producto" id="txtnombre">
                         </div>
                         <div class="six columns">
-                            <label for="exampleEmailInput">Unidad de medida</label>
-                            <input class="u-full-width" type="text" placeholder="unidad de medida"
-                                id="exampleEmailInput">
+                            <label for="txtum">Unidad de medida</label>
+                            <input class="u-full-width" type="text" placeholder="unidad de medida" id="txtum">
                         </div>
 
                     </div>
                     <div class="row">
                         <div class="twelve columns">
-                            <label>Categoria</label>
-                            <input type="text" class="u-full-width" placeholder="categoria" />
+                            <label for="txtcategoria">Categoria</label>
+                            <input type="text" id="txtcategoria" class="u-full-width" placeholder="categoria" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="six columns">
                             <label>Precio de compra</label>
-                            <input type="number" class="u-full-width" placeholder="precio de compra" />
+                            <input type="number" id="txtcompra" class="u-full-width" placeholder="precio de compra" />
                         </div>
                         <div class="six columns">
                             <label>precio de venta</label>
-                            <input type="number" class="u-full-width" placeholder="precio de venta" />
+                            <input type="number" id="txtventa" class="u-full-width" placeholder="precio de venta" />
                         </div>
                     </div>
 
-                    <input class="button-primary" type="submit" value="Guardar">
+                    <input class="button-primary" type="button" onclick="guardar()" value="Guardar">
                 </form>
 
 
             </div>
 
         </div>
-    </section>    
+    </section>
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="../../Resources/js/Login/header.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="../../Resources/js/marco/marco.js"></script>
+    <script src="../../Resources/js/commons/inventories-plugin.js"></script>
+    <script src="../../Resources/js/Produts/newproduct.js"></script>
 </body>
 
 </html>
