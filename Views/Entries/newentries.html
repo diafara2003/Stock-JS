@@ -84,15 +84,15 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Producto</th>
+                            <th >Producto</th>
                             <th>Descripción</th>
                             <th>Unidad de medida</th>
-                            <th>Cantidad</th>
-                            <th>Precio unitario</th>
-                            <th>Valor Total</th>
+                            <th class="text-right">Cantidad</th>
+                            <th class="text-right">Precio unitario</th>
+                            <th class="text-right">Valor Total</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id=tbodydatos>
                         <tr>
                             <td colspan="6">
                                 <h5 style="text-align: center;color:#b9b6b6">Sin registros</h5>
@@ -124,50 +124,54 @@
                     <div class="row">
                         <div class="u-full-width">
                             <label for="exampleEmailInput">Buscar producto</label>
-                            <input class="u-full-width autocomplete" webservice="producto/buscar?filter="
-                                Fnselected="SelectedProducto" type="text" placeholder="nombre del producto" id="txtproducto">
+                            <div class="autocomplete">
+                                <input class="u-full-width autocomplete" webservice="producto/buscar?filter="
+                                    Fnselected="SelectedProducto" type="text" placeholder="nombre del producto"
+                                    id="txtproducto">
+                                    <i class="fas fa-search"></i>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="u-full-width">
+                                <label for="txtum">Unidad de medida</label>
+                                <input class="u-full-width" type="text" placeholder="Unidad de medida" id="txtum">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="u-full-width">
+                                <label for="txtcantidad">Cantidad</label>
+                                <input class="u-full-width" type="number" placeholder="cantidad" id="txtcantidad">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="u-full-width">
+                                <label for="txtunitario">Precio unitario</label>
+                                <input class="u-full-width" type="number" placeholder="precio unitario"
+                                    id="txtunitario">
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="u-full-width">
-                            <label for="exampleEmailInput">Unidad de medida</label>
-                            <input class="u-full-width" type="text" placeholder="Unidad de medida"
-                                id="exampleEmailInput">
-                        </div>
+                    <div class="modal-footer">
+                        <span style="color:red">Todos los campos son obligatorios</span>
+                        <button type="button" class="button-primary"  onclick="agregarProducto()">Guardar</button>
                     </div>
-                    <div class="row">
-                        <div class="u-full-width">
-                            <label for="exampleEmailInput">Cantidad</label>
-                            <input class="u-full-width" type="number" placeholder="cantidad" id="exampleEmailInput">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="u-full-width">
-                            <label for="exampleEmailInput">Precio unitario</label>
-                            <input class="u-full-width" type="number" placeholder="precio unitario"
-                                id="exampleEmailInput">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="button-primary" onclick="agregarProducto()">Guardar</button>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script src="../../Resources/js/commons/inventories-plugin.js"></script>
-    <script src="../../Resources/js/commons/inventories-autocomplete.js"></script>
-    <script src="../../Resources/js/Login/header.js"></script>
-    <script src="../../Resources/js/marco/marco.js"></script>
-    <script src="../../Resources/js/entries/newentries.js"></script>
+        <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script src="../../Resources/js/commons/inventories-plugin.js"></script>
+        <script src="../../Resources/js/commons/inventories-autocomplete.js"></script>
+        <script src="../../Resources/js/Login/header.js"></script>
+        <script src="../../Resources/js/marco/marco.js"></script>
+        <script src="../../Resources/js/entries/newentries.js"></script>
 </body>
 
 </html>

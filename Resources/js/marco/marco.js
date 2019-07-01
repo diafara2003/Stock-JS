@@ -75,7 +75,7 @@ function activar_menu(_this, idMenu) {
 
        // var _html = renderizar_sub_menu(idMenu);
        $('.' + idMenu.replace(/ /g, "")).show('linear');
-        $(_this).after(_html);
+       // $(_this).after(_html);
 
        
     } else {

@@ -38,7 +38,7 @@
     <section>
         <div class="container-do-work row">
 
-            <h5>Nuevo producto</h5>
+            <h5 id="tipopagina">Nuevo producto</h5>
             <hr />
             <div class="shadow formulario">
 
@@ -71,7 +71,8 @@
                         </div>
                     </div>
 
-                    <input class="button-primary" type="button" onclick="guardar()" value="Guardar">
+                    <input class="button-primary" id="btnguardar" type="button" onclick="guardar()" value="Guardar">
+                    <input class="button-primary" id="btneditar" style="display: none" type="button" onclick="editar()" value="Editar">
                 </form>
 
 

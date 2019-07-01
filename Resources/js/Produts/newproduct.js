@@ -1,47 +1,17 @@
 let producto = {
-    ProdId: 0,
-    ProdNombre: '',
-    ProdUm: '',
-    ProdCategoria: '',
-    ProdPrecioCompra: 0,
-    ProdPrecioVenta: 0
+    prodId: 0,
+    prodNombre: '',
+    prodUm: '',
+    prodCategoria: '',
+    prodPrecioCompra: 0,
+    prodPrecioVenta: 0
 };
 
 function guardar() {
     obtener_campos();
-    validar_campos();
-}
 
+    if (validar_campos()) {
 
-function obtener_campos() {
-    producto.ProdNombre = document.getElementById('txtnombre').value;
-    producto.ProdUm = document.getElementById('txtum').value;
-    producto.ProdCategoria = document.getElementById('txtcategoria').value;
-    producto.ProdPrecioCompra = parseFloat(document.getElementById('txtcompra').value);
-    producto.ProdPrecioVenta = parseFloat(document.getElementById('txtventa').value);
-
-}
-
-function validar_campos() {
-
-    if (isNaN(producto.ProdPrecioCompra)) {
-        producto.ProdPrecioCompra = 0;
-    }
-    if (isNaN(producto.ProdPrecioVenta)) {
-        producto.ProdPrecioVenta = 0;
-    }
-
-    if (producto.ProdNombre == ''
-        || producto.ProdUm == ''
-        || producto.ProdCategoria == ''
-        || producto.ProdPrecioCompra == 0
-        || producto.ProdPrecioVenta == 0) {
-        Swal.fire(
-            'Nuevo producto',
-            'todos los campos son obligatorios',
-            'error');
-    }
-    else {
         ConsultaAjax('producto', 'POST', function (response) {
             if (response.codigo == -1) {
                 Swal.fire(
@@ -63,5 +33,83 @@ function validar_campos() {
             }
         }, producto);
     }
+}
+
+function editar() {
+    obtener_campos();
+
+    if (validar_campos()) {
+        ConsultaAjax('producto', 'PUT', function (response) {
+            if (response.codigo == -1) {
+                Swal.fire(
+                    'Editar producto',
+                   response.mensaje,
+                    'error');
+            } else {
+                Swal.fire(
+                    'Editar producto',
+                    'Se edito el producto correctamente',
+                    'success');
+            }
+        }, producto);
+    }
+}
+
+function cargar_producto(id) {
+    ConsultaAjax('producto/' + id, 'GET', function (response) {
+        producto = response;
+
+        document.getElementById('txtnombre').value = producto.prodNombre;
+        document.getElementById('txtum').value = producto.prodUm;
+        document.getElementById('txtcategoria').value = producto.prodCategoria;
+        document.getElementById('txtcompra').value = producto.prodPrecioCompra;
+        document.getElementById('txtventa').value = producto.prodPrecioVenta;
+
+    })
+}
+
+function obtener_campos() {
+    producto.prodNombre = document.getElementById('txtnombre').value;
+    producto.prodUm = document.getElementById('txtum').value;
+    producto.prodCategoria = document.getElementById('txtcategoria').value;
+    producto.prodPrecioCompra = parseFloat(document.getElementById('txtcompra').value);
+    producto.prodPrecioVenta = parseFloat(document.getElementById('txtventa').value);
 
 }
+
+function validar_campos() {
+    let result = false;
+    if (isNaN(producto.prodPrecioCompra)) {
+        producto.ProdPrecioCompra = 0;
+    }
+    if (isNaN(producto.prodPrecioVenta)) {
+        producto.ProdPrecioVenta = 0;
+    }
+
+    if (producto.prodNombre == ''
+        || producto.prodUm == ''
+        || producto.prodCategoria == ''
+        || producto.prodPrecioCompra == 0
+        || producto.prodPrecioVenta == 0) {
+        Swal.fire(
+            'Nuevo producto',
+            'todos los campos son obligatorios',
+            'error');
+    }
+    else {
+        result = true;
+    }
+    return result;
+}
+
+(function () {
+
+    var qs = ObtenerQueryString().id;
+
+    if (qs != undefined) {
+        document.getElementById('tipopagina').textContent = "Editar producto";
+        document.getElementById('btnguardar').style.display = "none";
+        document.getElementById('btneditar').style.display = "block";
+        cargar_producto(qs);
+    }
+})();

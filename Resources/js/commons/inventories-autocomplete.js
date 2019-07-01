@@ -68,13 +68,16 @@ function eventos_AC(autocomplete_input) {
     });
 
     autocomplete_input.blur(function () {
+        setTimeout(function () {
+            if ($('.resultAC').length > 0) {
+                ACFocus.val('');
+                selected_option_AC(this, undefined);
+                $('.resultAC').remove();
+            }
 
-        if ($('.resultAC').find('div[class*="hover"]').length == 0) {
-            ACFocus.val('');
-            selected_option_AC(this, undefined);
-        }
+            
+        }, 300);
 
-        $('.resultAC').remove();
     });
     autocomplete_input.focus(function () {
         if ($('.resultAC').length === 0) {
@@ -161,7 +164,7 @@ function renderizar_busqueda(data, autocomplete_input) {
 function selected_option_AC(_input, _selected_data) {
     var _selecte = _selected_data;
     var objectField = JSON.parse(ACFocus.attr('objectField'));
-    
+
     if (_selecte != undefined) {
         ACFocus.val(_selecte[objectField.value]);
     }

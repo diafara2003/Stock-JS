@@ -315,6 +315,15 @@ table i {
 /**
 ESTILOS AUTOCOMPLETE*/
 
+.autocomplete i {
+    font-size: 20px;
+    float: left;
+    top: 49px;
+    position: absolute;
+    color:#e65100;
+    left: 90%;
+}
+
 .resultAC {
     z-index: 999;
     position: fixed;
@@ -343,7 +352,7 @@ ESTILOS AUTOCOMPLETE*/
 
 @media (max-width: 1200px) {
     .container-do-work, .container-option {
-        width: 75% !important;
+        /* width: 80% !important; */
     }
 }
 

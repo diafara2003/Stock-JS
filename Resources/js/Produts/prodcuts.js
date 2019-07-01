@@ -15,7 +15,7 @@ function renderizar_tabla(data) {
         const element = data[i];
 
         html += '<tr>';
-        html += '<td class="text-right">' + element.prodId + '</td>';
+        html += '<td>' + element.prodId + '</td>';
         html += '<td>' + element.prodNombre + '</td>';
         html += '<td>' + element.prodUm + '</td>';
         html += '<td>' + element.prodCategoria + '</td>';
@@ -34,7 +34,8 @@ function no_hay_datos() {
 }
 
 function editar(id) {
-
+    var _url = window.location.href.toLowerCase().split('products')[0] + 'newproduct.html?id=' + id;
+    window.location.href=_url;
 }
 let eliminar_producto = undefined, _this = undefined;
 function eliminar(_td, id) {
@@ -53,7 +54,7 @@ function confirmarEliminar() {
                 'Producto',
                 'Error al crear el producto',
                 'error');
-                _this = undefined;
+            _this = undefined;
         } else {
             Swal.fire(
                 'Producto',
