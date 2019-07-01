@@ -40,7 +40,7 @@
     </section>
 
 
-    
+
 
     <section>
         <div class="container-do-work row">
@@ -51,7 +51,7 @@
                 <div class="row">
                     <div class="seven columns">
                         <label for="txtproveedor">Proveedor</label>
-                        <input class="u-full-width autocomplete"  type="text" placeholder="nombre del producto"
+                        <input class="u-full-width autocomplete" type="text" placeholder="nombre del producto"
                             id="txtproveedor">
                     </div>
                     <div class="two columns">
@@ -124,8 +124,8 @@
                     <div class="row">
                         <div class="u-full-width">
                             <label for="exampleEmailInput">Buscar producto</label>
-                            <input class="u-full-width" type="text" placeholder="Seleccione un producto"
-                                id="exampleEmailInput">
+                            <input class="u-full-width autocomplete" webservice="producto/buscar?filter="
+                                Fnselected="SelectedProducto" type="text" placeholder="nombre del producto" id="txtproducto">
                         </div>
                     </div>
                     <div class="row">
@@ -150,7 +150,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="button-primary">Guardar</button>
+                    <button type="button" class="button-primary" onclick="agregarProducto()">Guardar</button>
                 </div>
             </div>
         </div>
@@ -164,6 +164,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="../../Resources/js/commons/inventories-plugin.js"></script>
+    <script src="../../Resources/js/commons/inventories-autocomplete.js"></script>
     <script src="../../Resources/js/Login/header.js"></script>
     <script src="../../Resources/js/marco/marco.js"></script>
     <script src="../../Resources/js/entries/newentries.js"></script>

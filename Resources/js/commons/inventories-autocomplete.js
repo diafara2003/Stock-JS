@@ -68,7 +68,13 @@ function eventos_AC(autocomplete_input) {
     });
 
     autocomplete_input.blur(function () {
-        //  $('.resultAC').remove();
+
+        if ($('.resultAC').find('div[class*="hover"]').length == 0) {
+            ACFocus.val('');
+            selected_option_AC(this, undefined);
+        }
+
+        $('.resultAC').remove();
     });
     autocomplete_input.focus(function () {
         if ($('.resultAC').length === 0) {
@@ -105,12 +111,12 @@ function last_hover(_search_page, _height_) {
 function buscarAutocomplete(autocomplete_input, texto) {
 
     var _url_service = autocomplete_input.attr('webservice');
-    // _url_service += texto;
-     ConsultaAjax(_url_service, 'GET', function (response) {
-         renderizar_busqueda(data, autocomplete_input);
-     });
+    _url_service += texto;
+    ConsultaAjax(_url_service, 'GET', function (response) {
+        renderizar_busqueda(response, autocomplete_input);
+    });
 
-   
+
 }
 
 function renderizar_busqueda(data, autocomplete_input) {
@@ -126,13 +132,13 @@ function renderizar_busqueda(data, autocomplete_input) {
             const element = data[i];
             _html += "<div enumerable='" + i + "' onclick='selected_option_AC(this," + JSON.stringify(element).split("'").join('´').toString().split("&quot;").join('´').toString() + ")' class='option'>" + element[objectField.value] + "</div>";
         }
-        _html += '</div>';
+
     } else {
-        _html = "<div>" +
+        _html += "<div>" +
             " <span style='display:block; height:40px; padding:4px 0px; text-align:center'>No se encontraron registros</span>" +
             " </div>";
     }
-
+    _html += '</div>';
 
     $('.resultAC').remove();
     $('body').append(_html);
@@ -143,24 +149,30 @@ function renderizar_busqueda(data, autocomplete_input) {
 
     $(".resultAC").css({
         top: (topRelative + innerHeightTXT),
-        left: $('#txtproveedor').offset().left - $(window).scrollLeft(),
-        width: $('#txtproveedor').innerWidth(),
+        left: $(autocomplete_input).offset().left - $(window).scrollLeft(),
+        width: $(autocomplete_input).innerWidth(),
         display: "block",
         "box-shadow": (positionTop ? "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" : "0 -4px 8px 0 rgba(0, 0, 0, 0.2), 0 -6px 20px 0 rgba(0, 0, 0, 0.19)"),
         "position": "fixed",
-        "z-index": "999"
+        "z-index": "9999"
     });
 }
 
 function selected_option_AC(_input, _selected_data) {
-    ACFocus.val(_selected_data.value);
+    var _selecte = _selected_data;
+    var objectField = JSON.parse(ACFocus.attr('objectField'));
+    
+    if (_selecte != undefined) {
+        ACFocus.val(_selecte[objectField.value]);
+    }
+
     fnSelected = ACFocus.attr('Fnselected');
     if (fnSelected != undefined) {
         if (fnSelected != undefined) {
-            eval(fnSelected + '(' + JSON.stringify(_selected_data) + ',\'' + ACFocus[0].id + '\')');
+            eval(fnSelected + '(' + JSON.stringify(_selecte) + ',\'' + ACFocus[0].id + '\')');
         }
     }
-    ACFocus.attr('busqueda', 'true')
+    ACFocus.attr('busqueda', 'true');
 
     $('.resultAC').remove();
 }
