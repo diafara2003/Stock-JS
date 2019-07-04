@@ -19,8 +19,8 @@ function renderizar_tabla(data) {
         html += '<td>' + element.prodNombre + '</td>';
         html += '<td>' + element.prodUm + '</td>';
         html += '<td>' + element.prodCategoria + '</td>';
-        html += '<td class="text-right">' + element.prodPrecioCompra + '</td>';
-        html += '<td class="text-right">' + element.prodPrecioVenta + '</td>';
+        html += '<td class="text-right">' +Number(element.prodPrecioCompra).formatMoney(decimales, ',', '.'); + '</td>';
+        html += '<td class="text-right">' + Number(element.prodPrecioVenta).formatMoney(decimales, ',', '.'); + '</td>';
         html += '<td class="text-right"><i class="fas fa-edit" onclick="editar(' + element.prodId + ')"></i><i class="fas fa-trash-alt" onclick="eliminar(this,' + element.prodId + ')"></i></td>';
         html += '</td>';
     }

@@ -51,9 +51,9 @@ function nuevo_tr(producto) {
     _tr += '<td>' + producto.prodId + '</td>';
     _tr += '<td>' + producto.prodNombre + '</td>';
     _tr += '<td>' + producto.prodUm + '</td>';
-    _tr += '<td class="text-right">' + producto.cantidad + '</td>';
-    _tr += '<td class="text-right">' + producto.prodPrecioCompra + '</td>';
-    _tr += '<td class="text-right">' + producto.cantidad * producto.prodPrecioCompra + '</td>';
+    _tr += '<td class="text-right">' + Number(producto.cantidad).formatMoney(decimales, ',', '.'); + '</td>';
+    _tr += '<td class="text-right">' + Number(producto.prodPrecioCompra).formatMoney(decimales, ',', '.'); + '</td>';
+    _tr += '<td class="text-right">' + Numbrt(producto.cantidad * producto.prodPrecioCompra).formatMoney(decimales, ',', '.'); + '</td>';
     _tr += '</tr>';
 
     if (productos.length == 0) {

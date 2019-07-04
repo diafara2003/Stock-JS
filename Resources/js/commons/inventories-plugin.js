@@ -1,3 +1,6 @@
+
+var decimales=2;
+
 Number.prototype.formatMoney = function (places, thousand, decimal, notReverse) {
     places = !isNaN(places = Math.abs(places)) ? places : 2;
 
