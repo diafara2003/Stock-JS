@@ -8,6 +8,16 @@ let productos = [], proveedor = '',
         cantidad: 0
     };
 
+function proveedor_entrada() {
+    proveedor = document.getElementById('txtproveedor').value;
+
+    if (proveedor == '') {
+        $('#txtproveedor').addClass('obligatorio');
+    }else{
+        $('#txtproveedor').removeClass('obligatorio');
+    }
+}
+
 
 function agregarProducto() {
     producto.cantidad = parseFloat(document.getElementById('txtcantidad').value);
@@ -16,7 +26,7 @@ function agregarProducto() {
         producto.cantidad = 0;
     }
 
-    if (producto.prodId != 0 && producto.cantidad>0) {
+    if (producto.prodId != 0 && producto.cantidad > 0) {
         $('#modalAgregar').modal('hide');
         nuevo_tr(producto);
         agregar_detalle_entrada();
@@ -67,6 +77,29 @@ function cargar_datos_producto(producto) {
     document.getElementById('txtunitario').value = producto.prodPrecioVenta;
 }
 
+
+function guardar_entrada() {
+    if (validar_datos_obligatorio()) {
+
+    } else {
+        mostrar_mensaje('El cambpo de proveedor y los detalles de la entrada son obligatorios');
+    }
+}
+
+function validar_datos_obligatorio() {
+    var result = false;
+
+    if (proveedor != '' && productos.length > 0) {
+        result = true;
+    }
+
+    return result;
+}
+
+function mostrar_mensaje(msn) {
+    document.getElementById('msn').textContent = msn;
+    $('#modalmensaje').modal('show');
+}
 
 (function () {
 

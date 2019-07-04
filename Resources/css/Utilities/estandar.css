@@ -350,6 +350,10 @@ ESTILOS AUTOCOMPLETE*/
     cursor: pointer;
 }
 
+.obligatorio{
+    background-color: #FBE272 !important;
+}
+
 @media (max-width: 1200px) {
     .container-do-work, .container-option {
         /* width: 80% !important; */

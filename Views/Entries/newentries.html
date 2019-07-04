@@ -14,6 +14,9 @@
     <link href="../../Resources/externos/fontawesome/css/fontawesome.css" rel="stylesheet">
     <link href="../../Resources/externos/fontawesome/css/brands.css" rel="stylesheet">
     <link href="../../Resources/externos/fontawesome/css/solid.css" rel="stylesheet">
+
+
+
     <title>Inventarios</title>
 </head>
 
@@ -39,9 +42,6 @@
         </div>
     </section>
 
-
-
-
     <section>
         <div class="container-do-work row">
 
@@ -51,7 +51,7 @@
                 <div class="row">
                     <div class="seven columns">
                         <label for="txtproveedor">Proveedor</label>
-                        <input class="u-full-width autocomplete" type="text" placeholder="nombre del producto"
+                        <input class="u-full-width autocomplete obligatorio" onblur="proveedor_entrada()" type="text" placeholder="nombre del producto"
                             id="txtproveedor">
                     </div>
                     <div class="two columns">
@@ -66,7 +66,7 @@
                                 <i class="fas fa-plus"></i>
                             </span>
                         </button>
-                        <button class="btn-icono btn-icono-save">
+                        <button class="btn-icono btn-icono-save" onclick="guardar_entrada()">
                             <span>
                                 <i class="fas fa-save"></i>
                             </span>
@@ -84,7 +84,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th >Producto</th>
+                            <th>Producto</th>
                             <th>Descripción</th>
                             <th>Unidad de medida</th>
                             <th class="text-right">Cantidad</th>
@@ -128,7 +128,7 @@
                                 <input class="u-full-width autocomplete" webservice="producto/buscar?filter="
                                     Fnselected="SelectedProducto" type="text" placeholder="nombre del producto"
                                     id="txtproducto">
-                                    <i class="fas fa-search"></i>
+                                <i class="fas fa-search"></i>
 
                             </div>
                         </div>
@@ -154,24 +154,48 @@
                     </div>
                     <div class="modal-footer">
                         <span style="color:red">Todos los campos son obligatorios</span>
-                        <button type="button" class="button-primary"  onclick="agregarProducto()">Guardar</button>
+                        <button type="button" class="button-primary" onclick="agregarProducto()">Guardar</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-        <script src="../../Resources/js/commons/inventories-plugin.js"></script>
-        <script src="../../Resources/js/commons/inventories-autocomplete.js"></script>
-        <script src="../../Resources/js/Login/header.js"></script>
-        <script src="../../Resources/js/marco/marco.js"></script>
-        <script src="../../Resources/js/entries/newentries.js"></script>
+    <div class="modal fade" id="modalmensaje" tabindex="9990" role="dialog" data-backdrop="static"
+        data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <span id="msn"></span>
+                    <div class="modal-footer">
+
+                        <button type="button" class="button-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="../../Resources/js/commons/inventories-plugin.js"></script>
+    <script src="../../Resources/js/commons/inventories-autocomplete.js"></script>
+    <script src="../../Resources/js/Login/header.js"></script>
+    <script src="../../Resources/js/marco/marco.js"></script>
+    <script src="../../Resources/js/entries/newentries.js"></script>
 </body>
 
 </html>
