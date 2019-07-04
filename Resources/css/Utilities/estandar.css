@@ -351,12 +351,12 @@ ESTILOS AUTOCOMPLETE*/
 }
 
 .obligatorio{
-    background-color: #FBE272 !important;
+    background-color: #FAF396 !important;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
     .container-do-work, .container-option {
-        /* width: 80% !important; */
+        width: 75%;
     }
 }
 
