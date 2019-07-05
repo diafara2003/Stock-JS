@@ -246,6 +246,11 @@ th, td {
     padding-left: 5px !important;
 }
 
+table tbody a {
+    cursor: pointer;
+    color: #e65100 !important;
+}
+
 table i {
     color: #e65100;
     font-size: 18px;
@@ -320,7 +325,7 @@ ESTILOS AUTOCOMPLETE*/
     float: left;
     top: 49px;
     position: absolute;
-    color:#e65100;
+    color: #e65100;
     left: 90%;
 }
 
@@ -350,7 +355,7 @@ ESTILOS AUTOCOMPLETE*/
     cursor: pointer;
 }
 
-.obligatorio{
+.obligatorio {
     background-color: #FAF396 !important;
 }
 

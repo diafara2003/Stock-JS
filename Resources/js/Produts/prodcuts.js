@@ -15,13 +15,13 @@ function renderizar_tabla(data) {
         const element = data[i];
 
         html += '<tr>';
-        html += '<td>' + element.prodId + '</td>';
+        html += '<td><a  onclick="editar(' + element.prodId + ')">' + element.prodId + '</a></td>';
         html += '<td>' + element.prodNombre + '</td>';
         html += '<td>' + element.prodUm + '</td>';
         html += '<td>' + element.prodCategoria + '</td>';
-        html += '<td class="text-right">' +Number(element.prodPrecioCompra).formatMoney(decimales, ',', '.'); + '</td>';
-        html += '<td class="text-right">' + Number(element.prodPrecioVenta).formatMoney(decimales, ',', '.'); + '</td>';
-        html += '<td class="text-right"><i class="fas fa-edit" onclick="editar(' + element.prodId + ')"></i><i class="fas fa-trash-alt" onclick="eliminar(this,' + element.prodId + ')"></i></td>';
+        html += '<td class="text-right">' +Number(element.prodPrecioCompra).formatMoney(decimales); + '</td>';
+        html += '<td class="text-right">' + Number(element.prodPrecioVenta).formatMoney(decimales); + '</td>';
+        html += '<td class="text-right">/i><i class="fas fa-trash-alt" onclick="eliminar(this,' + element.prodId + ')"></i></td>';
         html += '</td>';
     }
 

@@ -1,4 +1,21 @@
-let productos = [], proveedor = '',
+let proveedor = '',
+    productos = [],
+    encabezado = {
+        EnProveedor: '',
+        EnFecha: moment().format(),
+        EnObservacion: '',
+        EntradaDetalle: []
+    },
+    detalle = {
+        EnDetId: 0,
+        EndDetEntradaId: 0,
+        EnDetProuctoId: 0,
+        EnDetCantidad: 0,
+        EnDetVrUnit: 0,
+        EnDetPrcIva: 0,
+        EnDetVrIva: 0,
+        EnDetVrTotal: 0
+    },
     producto = {
         prodId: 0,
         prodNombre: '',
@@ -9,11 +26,11 @@ let productos = [], proveedor = '',
     };
 
 function proveedor_entrada() {
-    proveedor = document.getElementById('txtproveedor').value;
+    encabezado.EnProveedor = document.getElementById('txtproveedor').value;
 
-    if (proveedor == '') {
+    if (encabezado.EnProveedor == '') {
         $('#txtproveedor').addClass('obligatorio');
-    }else{
+    } else {
         $('#txtproveedor').removeClass('obligatorio');
     }
 }
@@ -29,7 +46,7 @@ function agregarProducto() {
     if (producto.prodId != 0 && producto.cantidad > 0) {
         $('#modalAgregar').modal('hide');
         nuevo_tr(producto);
-        agregar_detalle_entrada();
+        agregar_detalle_entrada(producto);
         producto = {
             prodId: 0,
             prodNombre: '',
@@ -43,7 +60,19 @@ function agregarProducto() {
 }
 
 function agregar_detalle_entrada(producto) {
-    productos.push(producto);
+
+
+
+    encabezado.EntradaDetalle.push({
+        EnDetId: 0,
+        EndDetEntradaId: 0,
+        EnDetProuctoId: producto.prodId,
+        EnDetCantidad: producto.cantidad,
+        EnDetVrUnit: producto.prodPrecioCompra,
+        EnDetPrcIva: 0,
+        EnDetVrIva: 0,
+        EnDetVrTotal: producto.cantidad * producto.prodPrecioCompra
+    });
 }
 
 function nuevo_tr(producto) {
@@ -51,12 +80,12 @@ function nuevo_tr(producto) {
     _tr += '<td>' + producto.prodId + '</td>';
     _tr += '<td>' + producto.prodNombre + '</td>';
     _tr += '<td>' + producto.prodUm + '</td>';
-    _tr += '<td class="text-right">' + Number(producto.cantidad).formatMoney(decimales, ',', '.'); + '</td>';
-    _tr += '<td class="text-right">' + Number(producto.prodPrecioCompra).formatMoney(decimales, ',', '.'); + '</td>';
-    _tr += '<td class="text-right">' + Numbrt(producto.cantidad * producto.prodPrecioCompra).formatMoney(decimales, ',', '.'); + '</td>';
+    _tr += '<td class="text-right">' + Number(producto.cantidad).formatMoney(decimales); + '</td>';
+    _tr += '<td class="text-right">' + Number(producto.prodPrecioCompra).formatMoney(decimales); + '</td>';
+    _tr += '<td class="text-right">' + Number(producto.cantidad * producto.prodPrecioCompra).formatMoney(decimales); + '</td>';
     _tr += '</tr>';
 
-    if (productos.length == 0) {
+    if (encabezado.EntradaDetalle.length == 0) {
         document.getElementById('tbodydatos').innerHTML = _tr;
     } else {
         $('#tbodydatos').append(_tr);
@@ -80,25 +109,34 @@ function cargar_datos_producto(producto) {
 
 function guardar_entrada() {
     if (validar_datos_obligatorio()) {
-
+        ConsultaAjax('entrada', 'POST', function (response) {
+            let type = 'sucess';
+            if (response.codigo < 0) {
+                type = "error;"
+            }
+            mostrar_mensaje(response.mensaje, type);
+        }, encabezado);
     } else {
-        mostrar_mensaje('El cambpo de proveedor y los detalles de la entrada son obligatorios');
+        mostrar_mensaje('El cambpo de proveedor y los detalles de la entrada son obligatorios', 'error');
     }
 }
 
 function validar_datos_obligatorio() {
     var result = false;
 
-    if (proveedor != '' && productos.length > 0) {
+    if (encabezado.EnProveedor != '' && encabezado.EntradaDetalle.length > 0) {
         result = true;
     }
 
     return result;
 }
 
-function mostrar_mensaje(msn) {
-    document.getElementById('msn').textContent = msn;
-    $('#modalmensaje').modal('show');
+function mostrar_mensaje(msn, type) {
+
+    Swal.fire(
+        'Creación de entrada',
+        msn,
+        type)
 }
 
 (function () {

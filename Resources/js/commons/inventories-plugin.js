@@ -1,11 +1,41 @@
 
-var decimales=2;
+var decimales = 2;
 
-Number.prototype.formatMoney = function (places, thousand, decimal, notReverse) {
+if (!String.prototype.reverse) {
+    String.prototype.reverse = function () {
+        var result = "", revert = "", resultdecimal;
+        var split_decimal = this.split('.');
+        if (split_decimal[1] != undefined) {
+            split_decimal = split_decimal[1];
+            result = this.split('.')[1];
+
+            for (var i = split_decimal.length; i > 0; i--) {
+                var _position = split_decimal[i - 1];
+                if (_position == '0') {
+                    result = this.split('.')[1].substr(0, i - 1);
+                } else {
+                    break;
+                }
+            }
+            if (result != '') {
+                result = '.' + result;
+            }
+            return this.split('.')[0] + result;
+
+        } else {
+            return this;
+        }
+
+    }
+}
+
+
+
+Number.prototype.formatMoney = function (places, notReverse) {
     places = !isNaN(places = Math.abs(places)) ? places : 2;
 
-    thousand =",";
-    decimal = decimal || ".";
+    let thousand = ",";
+    let decimal = ".";
     var number = this,
         negative = number < 0 ? "-" : "",
         i = parseInt(number = Math.abs(+number || 0).toFixed(10), 10) + "",
@@ -227,7 +257,7 @@ function ObtenerQueryString() {
 //FUNCION PARA OBTENER DATOS POR QUERYSTRING
 //resultado get.isEdit;
 //============================================================================================================
-function Notificacion(){
+function Notificacion() {
 
 
 }
