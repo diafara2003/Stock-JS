@@ -1,10 +1,11 @@
 let proveedor = '',
+    is_edicion = false,
     productos = [],
     encabezado = {
-        EnProveedor: '',
-        EnFecha: moment().format(),
-        EnObservacion: '',
-        EntradaDetalle: []
+        enProveedor: '',
+        enFecha: moment().format(),
+        enObservacion: '',
+        entradaDetalle: []
     },
     detalle = {
         EnDetId: 0,
@@ -26,9 +27,9 @@ let proveedor = '',
     };
 
 function proveedor_entrada() {
-    encabezado.EnProveedor = document.getElementById('txtproveedor').value;
+    encabezado.enProveedor = document.getElementById('txtproveedor').value;
 
-    if (encabezado.EnProveedor == '') {
+    if (encabezado.enProveedor == '') {
         $('#txtproveedor').addClass('obligatorio');
     } else {
         $('#txtproveedor').removeClass('obligatorio');
@@ -45,7 +46,7 @@ function agregarProducto() {
 
     if (producto.prodId != 0 && producto.cantidad > 0) {
         $('#modalAgregar').modal('hide');
-        nuevo_tr(producto);
+        nuevo_tr(producto, 0);
         agregar_detalle_entrada(producto);
         producto = {
             prodId: 0,
@@ -63,19 +64,19 @@ function agregar_detalle_entrada(producto) {
 
 
 
-    encabezado.EntradaDetalle.push({
-        EnDetId: 0,
-        EndDetEntradaId: 0,
-        EnDetProuctoId: producto.prodId,
-        EnDetCantidad: producto.cantidad,
-        EnDetVrUnit: producto.prodPrecioCompra,
-        EnDetPrcIva: 0,
-        EnDetVrIva: 0,
-        EnDetVrTotal: producto.cantidad * producto.prodPrecioCompra
+    encabezado.entradaDetalle.push({
+        enDetId: 0,
+        endDetEntradaId: 0,
+        enDetProuctoId: producto.prodId,
+        enDetCantidad: producto.cantidad,
+        enDetVrUnit: producto.prodPrecioCompra,
+        enDetPrcIva: 0,
+        enDetVrIva: 0,
+        enDetVrTotal: producto.cantidad * producto.prodPrecioCompra
     });
 }
 
-function nuevo_tr(producto) {
+function nuevo_tr(producto, id) {
     let _tr = '<tr>';
     _tr += '<td>' + producto.prodId + '</td>';
     _tr += '<td>' + producto.prodNombre + '</td>';
@@ -83,9 +84,10 @@ function nuevo_tr(producto) {
     _tr += '<td class="text-right">' + Number(producto.cantidad).formatMoney(decimales); + '</td>';
     _tr += '<td class="text-right">' + Number(producto.prodPrecioCompra).formatMoney(decimales); + '</td>';
     _tr += '<td class="text-right">' + Number(producto.cantidad * producto.prodPrecioCompra).formatMoney(decimales); + '</td>';
+    _tr += '<td class="text-center"><i class="fas fa-trash-alt" onclick="eliminar(this,' + id + ')"></td>';
     _tr += '</tr>';
 
-    if (encabezado.EntradaDetalle.length == 0) {
+    if (encabezado.entradaDetalle.length == 0) {
         document.getElementById('tbodydatos').innerHTML = _tr;
     } else {
         $('#tbodydatos').append(_tr);
@@ -106,16 +108,42 @@ function cargar_datos_producto(producto) {
     document.getElementById('txtunitario').value = producto.prodPrecioVenta;
 }
 
+function eliminar(_this, id) {
+    ConsultaAjax('EntradaDetalle', 'DELETE', function (response) {
+
+        if (response.codigo == -1) {
+
+            
+            Swal.fire(
+                'entrada',
+                'Error al eliminar el producto',
+                'error');
+            
+        } else {
+            $(_this).closest('tr').remove();
+            Swal.fire(
+                'entrada',
+                'Se elimino correctamente el producto',
+                'success');
+        }
+
+    }, id);
+}
+
 
 function guardar_entrada() {
     if (validar_datos_obligatorio()) {
-        ConsultaAjax('entrada', 'POST', function (response) {
-            let type = 'sucess';
+        _TYPE = "POST";
+
+        ConsultaAjax('entrada', _TYPE, function (response) {
+            let type = 'success';
             if (response.codigo < 0) {
-                type = "error;"
+                type = "error";
             }
             mostrar_mensaje(response.mensaje, type);
+            cargar_entrada(response.codigo);
         }, encabezado);
+
     } else {
         mostrar_mensaje('El cambpo de proveedor y los detalles de la entrada son obligatorios', 'error');
     }
@@ -124,7 +152,7 @@ function guardar_entrada() {
 function validar_datos_obligatorio() {
     var result = false;
 
-    if (encabezado.EnProveedor != '' && encabezado.EntradaDetalle.length > 0) {
+    if (encabezado.enProveedor != '' && encabezado.entradaDetalle.length > 0) {
         result = true;
     }
 
@@ -139,6 +167,28 @@ function mostrar_mensaje(msn, type) {
         type)
 }
 
+function cargar_entrada(id) {
+    ConsultaAjax('entrada/' + id, 'GET', function (response) {
+        encabezado = response;
+
+        document.getElementById('tbodydatos').innerHTML = "";
+        $('#txtproveedor').removeClass('obligatorio');
+        document.getElementById('txtproveedor').value = response.enProveedor;
+
+        for (let i = 0; i < response.entradaDetalle.length; i++) {
+            const element = response.entradaDetalle[i];
+            producto = {};
+            producto.cantidad = element.enDetCantidad;
+            producto.prodId = element.enDetProuctoId;
+            producto.prodUm = element.enDetProucto.prodUm;
+            producto.prodNombre = element.enDetProucto.prodNombre;
+            producto.prodPrecioCompra = element.enDetProucto.prodPrecioCompra;
+            nuevo_tr(producto, element.enDetId);
+
+        }
+    });
+}
+
 (function () {
 
     $("#txtproducto").attr('objectField', JSON.stringify({
@@ -146,4 +196,13 @@ function mostrar_mensaje(msn, type) {
     }));
 
     autocomplete('txtproducto');
+
+    var qs = ObtenerQueryString().id;
+
+    if (qs != undefined) {
+        is_edicion = true;
+        document.getElementById('tipopagina').textContent = "Editar producto";
+        cargar_entrada(qs);
+    }
+
 })();

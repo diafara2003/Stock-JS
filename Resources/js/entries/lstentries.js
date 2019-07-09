@@ -17,11 +17,16 @@ function renderizar_tabla(data) {
         const element = data[i];
 
         html += '<tr>';
-        html += '<td><a>' + element.enId + '</a></td>';
+        html += '<td><a onclick="ver_entrada('+element.enId+')">' + element.enId + '</a></td>';
         html += '<td>' + element.enProveedor + '</td>';
         html += '<td>' +moment(element.enFecha ).format("DD/MM/YYYY") + '</td>';        
-        html += '<td class="text-right">' +element.enObservacion + '</td>';        
-        html += '<td class="text-right"><i class="fas fa-trash-alt" onclick="eliminar(this,' + element.enId + ')"></i></td>';
+        if (element.enObservacion==''){
+            html += '<td>Sin comentarios</td>';    
+        }else{
+            html += '<td>' +element.enObservacion + '</td>';    
+        }
+            
+        html += '<td class="text-center"><i class="fas fa-trash-alt" onclick="eliminar(this,' + element.enId + ')"></i></td>';
         html += '</td>';
     }
 
@@ -32,6 +37,39 @@ function renderizar_tabla(data) {
 function no_hay_datos() {
     var html = '<tr><td colspan="7" class="text-center"><h5 style="color: #b9b6b6">No hay datos</h5></td></tr>';
     document.getElementById('tbobydatos').innerHTML = html;
+}
+
+function ver_entrada(id){
+    var _url = window.location.href.toLowerCase().split('entries')[0] + 'entries/newentries.html?id=' + id;
+    window.location.href=_url;
+}
+
+let eliminar_entrada = undefined, _this = undefined;
+function eliminar(_td, id) {
+    _this = $(_td).closest('tr');
+    eliminar_entrada = id;
+    $('#modaleliminar').modal('show');
+}
+function confirmarEliminar() {
+    ConsultaAjax('entrada', 'DELETE', function (response) {
+
+        if (response.codigo == -1) {
+            eliminar_entrada = undefined;
+            
+            Swal.fire(
+                'entrada',
+                'Error al eliminar la entrada',
+                'error');
+            _this = undefined;
+        } else {
+            _this.remove();
+            Swal.fire(
+                'entrada',
+                'Se elimino correctamente la entrada',
+                'success');
+        }
+
+    }, eliminar_entrada);
 }
 
 

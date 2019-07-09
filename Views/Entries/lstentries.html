@@ -50,7 +50,7 @@
                         <th>Proveedor</th>
                         <th>fecha</th>
                         <th >Observaciones</th>
-                        <th class="text-right">Opciones</th>
+                        <th class="text-center">Opciones</th>
                     </thead>
 
                     <tbody id="tbobydatos">
@@ -62,6 +62,30 @@
 
         </div>
     </section>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="modaleliminar" tabindex="9990" role="dialog" data-backdrop="static"
+        data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span>¿Esta seguro de eliminar la entrada?</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="button-primary" data-dismiss="modal"
+                        onclick="confirmarEliminar()">Aceptar</button>
+                    <button type="button" class="button-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -75,6 +99,7 @@
     <script src="../../Resources/js/Login/header.js"></script>
     <script src="../../Resources/js/commons/moment.js"></script>
     <script src="../../Resources/js/marco/marco.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="../../Resources/js/entries/lstentries.js"></script>
 </body>
 

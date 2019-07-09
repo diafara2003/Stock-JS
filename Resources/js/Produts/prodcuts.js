@@ -21,7 +21,7 @@ function renderizar_tabla(data) {
         html += '<td>' + element.prodCategoria + '</td>';
         html += '<td class="text-right">' +Number(element.prodPrecioCompra).formatMoney(decimales); + '</td>';
         html += '<td class="text-right">' + Number(element.prodPrecioVenta).formatMoney(decimales); + '</td>';
-        html += '<td class="text-right">/i><i class="fas fa-trash-alt" onclick="eliminar(this,' + element.prodId + ')"></i></td>';
+        html += '<td class="text-right"><i class="fas fa-trash-alt" onclick="eliminar(this,' + element.prodId + ')"></i></td>';
         html += '</td>';
     }
 
