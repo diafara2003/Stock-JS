@@ -126,10 +126,13 @@ function ConsultaAjax(metodo, type, callback, parametros, async, error) {
                 $('body').css('cursor', 'default');
                 console.error('Error: ' + req.responseText);
                 //$('.progress-bar').addClass('progress-bar-danger');
-                Notificacion({ mensaje: "Ocurrió un error en el servidor, por favor intentar más tarde ", codigo: "-1" });
+                Swal.fire(
+                    'Error',
+                    'Se presento un error al consultar ',
+                    'error');
                 if (error != undefined)
                     error(req);
-                $('.cargando').fadeOut();
+               
             }
         }
     };

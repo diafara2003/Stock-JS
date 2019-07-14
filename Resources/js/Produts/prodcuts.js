@@ -5,6 +5,11 @@ function consultar() {
         } else {
             no_hay_datos();
         }
+    },undefined,true,function(){
+        Swal.fire(
+            'Producto',
+            'Se presento un error al consultar los productos',
+            'error');
     })
 }
 
