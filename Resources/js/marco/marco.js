@@ -13,7 +13,7 @@ const MENUS_OP = [
         item: 'Entrada de almacén', subItem: [
             { name: 'Crear entrada', path: '../Entries/newentries.html' },
             { name: 'Edición entrada', path: '../Entries/lstentries.html' },
-            { name: 'Aprobación entrada', path: '/entries' },
+            { name: 'Aprobación entrada', path: '../Entries/Approve.html' },
         ]
 
     },
