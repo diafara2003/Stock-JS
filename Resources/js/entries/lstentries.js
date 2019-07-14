@@ -1,7 +1,7 @@
 
-function consultar_entradas(){
+function consultar_entradas() {
 
-    ConsultaAjax('entrada', 'GET', function(response){
+    ConsultaAjax('entrada', 'GET', function (response) {
         if (response.length > 0) {
             renderizar_tabla(response);
         } else {
@@ -17,20 +17,40 @@ function renderizar_tabla(data) {
         const element = data[i];
 
         html += '<tr>';
-        html += '<td><a onclick="ver_entrada('+element.enId+')">' + element.enId + '</a></td>';
+        html += '<td><a onclick="ver_entrada(' + element.enId + ')">' + element.enId + '</a></td>';
         html += '<td>' + element.enProveedor + '</td>';
-        html += '<td>' +moment(element.enFecha ).format("DD/MM/YYYY") + '</td>';        
-        if (element.enObservacion==''){
-            html += '<td>Sin comentarios</td>';    
-        }else{
-            html += '<td>' +element.enObservacion + '</td>';    
+        html += '<td>' + moment(element.enFecha).format("DD/MM/YYYY") + '</td>';
+        if (element.enObservacion == '') {
+            html += '<td>Sin comentarios</td>';
+        } else {
+            html += '<td>' + element.enObservacion + '</td>';
         }
-            
+
+        html += '<td>' + html_estado(element.enEstado) + '</td>';
+
         html += '<td class="text-center"><i class="fas fa-trash-alt" onclick="eliminar(this,' + element.enId + ')"></i></td>';
         html += '</td>';
     }
 
     document.getElementById('tbobydatos').innerHTML = html;
+}
+
+function html_estado(estado) {
+    var _estado = '';
+
+    switch (estado) {
+        case -1:
+            _estado = 'Rechazada';
+            break;
+        case 0:
+            _estado = 'Generada';
+            break;
+        case 1:
+            _estado = 'Aprobada';
+            break;
+    }
+
+    return _estado;
 }
 
 
@@ -39,9 +59,9 @@ function no_hay_datos() {
     document.getElementById('tbobydatos').innerHTML = html;
 }
 
-function ver_entrada(id){
+function ver_entrada(id) {
     var _url = window.location.href.toLowerCase().split('entries')[0] + 'entries/newentries.html?id=' + id;
-    window.location.href=_url;
+    window.location.href = _url;
 }
 
 let eliminar_entrada = undefined, _this = undefined;
@@ -55,7 +75,7 @@ function confirmarEliminar() {
 
         if (response.codigo == -1) {
             eliminar_entrada = undefined;
-            
+
             Swal.fire(
                 'entrada',
                 'Error al eliminar la entrada',
@@ -73,6 +93,6 @@ function confirmarEliminar() {
 }
 
 
-(function(){
+(function () {
     consultar_entradas();
 })();
