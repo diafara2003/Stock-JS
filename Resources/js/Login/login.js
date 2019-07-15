@@ -18,8 +18,14 @@ function validarDatos(e) {
                     'error')
             }
             else {
-                window.location.href = window.location.href.split('Views')[0]+'/Views/marco/inicio.html';
+                localStorage.setItem("sesion-inventories-app", Generar_objeto_sesion(response));
+                window.location.href = window.location.href.split('Views')[0] + '/Views/marco/inicio.html';
             }
         });
     }
+}
+
+function Generar_objeto_sesion(response) {
+    return JSON.stringify(response);
+
 }
