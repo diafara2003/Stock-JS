@@ -264,3 +264,16 @@ function Notificacion() {
 
 
 }
+
+
+function GetSession() {
+    let _session = localStorage.getItem("sesion-inventories-app");
+
+    if (_session==undefined || _session=='') {
+        window.location.href = window.location.href.split('Views')[0] + '/Views/login/index.html';
+    }
+}
+
+(function () {
+    GetSession();
+})();

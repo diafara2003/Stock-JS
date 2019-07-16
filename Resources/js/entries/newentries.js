@@ -138,10 +138,12 @@ function guardar_entrada() {
         ConsultaAjax('entrada', _TYPE, function (response) {
             let type = 'success';
             if (response.codigo < 0) {
-                type = "error";
+         //       type = "error";
+            }else{
+                cargar_entrada(response.codigo);
             }
-            mostrar_mensaje(response.mensaje, type);
-            cargar_entrada(response.codigo);
+            mostrar_mensaje("Se guardo los cambio correctamente", type);
+          //  
         }, encabezado);
 
     } else {

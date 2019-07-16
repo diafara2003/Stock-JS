@@ -1,7 +1,7 @@
 
 function consultar_entradas() {
 
-    ConsultaAjax('entrada', 'GET', function (response) {
+    ConsultaAjax('entrada/Estado/0', 'GET', function (response) {
         if (response.length > 0) {
             renderizar_tabla(response);
         } else {
