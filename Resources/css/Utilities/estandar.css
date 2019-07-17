@@ -1,141 +1,144 @@
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin: 0;
 }
 
 .font-weight-normal {
-    font-weight: 400;
-    color: white;
+  font-weight: 400;
+  color: white;
 }
 
 header {
-    width: 100%;
-    color: white;
-    position: fixed;
-    z-index: 99;
+  width: 100%;
+  color: white;
+  position: fixed;
+  z-index: 99;
 }
 
 header h5 {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .header-title {
-    margin-top: 0;
-    padding: 10px;
+  margin-top: 0;
+  padding: 10px;
 }
 
 .nav-header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .nav-header i {
-    font-size: 25px;
-    cursor: pointer;
-    margin: 7px 0 0 10px;
-    font-size: 25px;
+  font-size: 25px;
+  cursor: pointer;
+  margin: 7px 0 0 10px;
+  font-size: 25px;
 }
 
 .d-flex {
-    display: flex;
+  display: flex;
 }
 
 .border-bottom {
-    border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
 }
 
 .p-3 {
-    padding: 10px;
+  padding: 10px;
 }
 
-.mb-0, .my-0 {
-    margin-bottom: 0;
+.mb-0,
+.my-0 {
+  margin-bottom: 0;
 }
 
 .border-top {
-    border-top: 1px solid #e65100;
+  border-top: 1px solid #e65100;
 }
 
 .login-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    /* position: absolute; */
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  /* position: absolute; */
 }
 
 .form-login {
-    width: 500px;
-    padding: 10px;
-    border: 1px solid #ebebeb;
+  width: 500px;
+  padding: 10px;
+  border: 1px solid #ebebeb;
 }
 
 .header-color {
-    background: #e65100;
-    color: white;
-    height: 45px;
-    width: 100%;
-    z-index: 99;
+  background: #e65100;
+  color: white;
+  height: 45px;
+  width: 100%;
+  z-index: 99;
 }
 
 .formulario {
-    padding: 10px;
+  padding: 10px;
 }
 
 .row {
-    display: block;
-    margin: 0;
+  display: block;
+  margin: 0;
 }
 
 .shadow-sm {
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
 .shadow {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 .text-right {
-    text-align: right;
+  text-align: right;
 }
 
 .text-left {
-    text-align: left;
+  text-align: left;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .data-login {
-    margin-top: 60px;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
+  margin-top: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 
 .footer {
-    position: fixed;
-    height: 30px;
-    width: 100%;
-    text-align: center;
-    z-index: 999;
-    color: white;
-    bottom: 0;
+  position: fixed;
+  height: 30px;
+  width: 100%;
+  text-align: center;
+  z-index: 999;
+  color: white;
+  bottom: 0;
 }
 
 .footer-desc {
-    background: #e65100;
-    justify-content: space-around;
-    display: flex;
+  background: #e65100;
+  justify-content: space-around;
+  display: flex;
 }
 
 i {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .mensaje-error {
-    color: red;
+  color: red;
 }
 
 /*
@@ -143,80 +146,81 @@ ESTILOS MENU
 */
 
 .menu {
-    position: absolute;
-    width: 200px;
-    height: 100%;
-    border-right: 1px solid #e65100;
-    z-index: 9;
-    background: white;
-    overflow: auto;
+  position: absolute;
+  width: 200px;
+  height: 100%;
+  border-right: 1px solid #e65100;
+  z-index: 9;
+  background: white;
+  overflow: auto;
 }
 
 .option-menu {
-    margin: 55px 5px 10px 5px;
+  margin: 55px 5px 10px 5px;
 }
 
 .option-menu-item {
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-    padding: 5px;
-    border: 1px solid #ebebeb;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 5px;
+  border: 1px solid #ebebeb;
+  margin-bottom: 10px;
 }
 
 .option-menu-item i {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .active-option {
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
 .option-menu-item:hover {
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-    cursor: pointer;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  cursor: pointer;
 }
 
 .sub-item-menu {
-    margin-top: -5px;
-    margin-bottom: -5px;
+  margin-top: -5px;
+  margin-bottom: -5px;
 }
 
 .oculto-menu {
-    margin-left: 20px !important;
-    width: 95% !important;
+  margin-left: 20px !important;
+  width: 95% !important;
 }
 
 .texto-menu {
-    color: #b9b6b6;
-    margin-top: 20%;
-    margin-left: 40%;
-    font-weight: 400;
+  color: #b9b6b6;
+  margin-top: 20%;
+  margin-left: 40%;
+  font-weight: 400;
 }
 
 h5 {
-    font-weight: 500;
-    font-size: 18px;
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .container-do-work {
-    margin-top: 65px;
-    position: absolute;
-    z-index: -1;
-    margin-left: 230px;
-    width: 80%;
+  margin-top: 65px;
+  position: absolute;
+  z-index: -1;
+  margin-left: 230px;
+  width: 80%;
 }
 
 .container-option {
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
-    margin-top: 55px;
-    position: absolute;
-    z-index: -1;
-    margin-left: 230px;
-    height: auto;
-    padding: 5px;
-    width: 80%;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  margin-top: 55px;
+  position: absolute;
+  z-index: -1;
+  margin-left: 230px;
+  height: auto;
+  padding: 5px;
+  width: 80%;
 }
 
 /*
@@ -224,197 +228,254 @@ ESTILOS TABLA
 */
 
 table {
-    width: 100%;
-    border-spacing: 0;
-    border-collapse: collapse;
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
 }
 
 thead tr {
-    height: 36px;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  height: 36px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 th {
-    background: #e65100;
-    color: white;
-    padding: 5px;
-    font-weight: 100;
+  background: #e65100;
+  color: white;
+  padding: 5px;
+  font-weight: 100;
 }
 
-th, td {
-    padding-right: 5px !important;
-    padding-left: 5px !important;
+th,
+td {
+  padding-right: 5px !important;
+  padding-left: 5px !important;
 }
 
 table tbody a {
-    cursor: pointer;
-    color: #e65100 !important;
+  cursor: pointer;
+  color: #e65100 !important;
 }
 
 table i {
-    color: #e65100;
-    font-size: 18px;
-    margin-right: 5px;
+  color: #e65100;
+  font-size: 18px;
+  margin-right: 5px;
 }
 
 .btn-icono {
-    width: 40px;
-    height: 40px;
-    color: #fff;
-    padding: 0;
-    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
-    border-radius: 50%;
-    cursor: pointer;
-    display: inline-flex;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  padding: 0;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-flex;
 }
 
 .btn-icono-primary {
-    background-color: #3f51b5;
+  background-color: #3f51b5;
 }
 
 .btn-icono-danger {
-    background-color: red;
+  background-color: red;
 }
 
 .btn-icono-save {
-    background-color: #e0e0e0;
-    color: rgba(0, 0, 0, 0.87) !important;
+  background-color: #e0e0e0;
+  color: rgba(0, 0, 0, 0.87) !important;
 }
 
 .btn-icono :hover {
-    color: #fff;
+  color: #fff;
 }
 
 .btn-icono-save :hover {
-    color: rgba(0, 0, 0, 0.87) !important;
+  color: rgba(0, 0, 0, 0.87) !important;
 }
 
 .btn-icono span {
-    width: 100%;
-    display: inherit;
+  width: 100%;
+  display: inherit;
 }
 
 .btn-icono i {
-    font-size: 20px;
-    margin-left: 9px;
+  font-size: 20px;
+  margin-left: 9px;
 }
 
 .modal-header span {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 .swal2-content {
-    font-size: 16px !important;
+  font-size: 16px !important;
 }
 
 .swal2-styled.swal2-confirm {
-    padding-top: 0px !important;
+  padding-top: 0px !important;
 }
 
 .swal2-actions button {
-    font-size: 15px !important;
-    background: #e65100 !important;
-    color: white !important;
+  font-size: 15px !important;
+  background: #e65100 !important;
+  color: white !important;
 }
 
 /**
 ESTILOS AUTOCOMPLETE*/
 
 .autocomplete i {
-    font-size: 20px;
-    float: left;
-    top: 49px;
-    position: absolute;
-    color: #e65100;
-    left: 90%;
+  font-size: 20px;
+  float: left;
+  top: 49px;
+  position: absolute;
+  color: #e65100;
+  left: 90%;
 }
 
 .resultAC {
-    z-index: 999;
-    position: fixed;
-    background: white;
-    max-height: 250px;
-    overflow: auto;
+  z-index: 999;
+  position: fixed;
+  background: white;
+  max-height: 250px;
+  overflow: auto;
 }
 
 .option {
-    padding: 5px;
-    border-bottom: 1px solid #e0e0e0;
-    cursor: pointer;
+  padding: 5px;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
 }
 
 .option:hover {
-    background-color: #e65100;
-    color: #f7f9f9;
-    cursor: pointer;
+  background-color: #e65100;
+  color: #f7f9f9;
+  cursor: pointer;
 }
 
 .hover {
-    background-color: #e65100;
-    color: #f7f9f9;
-    cursor: pointer;
+  background-color: #e65100;
+  color: #f7f9f9;
+  cursor: pointer;
 }
 
 .obligatorio {
-    background-color: #FAF396 !important;
+  background-color: #faf396 !important;
 }
 
 @media (max-width: 1100px) {
-    .container-do-work, .container-option {
-        width: 75%;
-    }
+  .container-do-work,
+  .container-option {
+    width: 75%;
+  }
 }
 
 @media (max-width: 950px) {
-    .data-login {
-        display: block;
-    }
-    .login-container {
-        flex-wrap: wrap;
-    }
-    .noticia-login {
-        width: 95% !important;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #ebebeb;
-        height: auto !important;
-    }
-    .form-login {
-        width: 95%;
-        margin-top: 0px !important;
-    }
-    .footer {
-        position: initial;
-        width: 99%;
-    }
-    .menu {
-        width: 99%;
-    }
-    .container-do-work {
-        margin-left: 10px;
-        width: 95%;
-    }
-    .container-option {
-        margin-left: 10px;
-        width: 95%;
-    }
+  .data-login {
+    display: block;
+  }
+  .login-container {
+    flex-wrap: wrap;
+  }
+  .noticia-login {
+    width: 95% !important;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ebebeb;
+    height: auto !important;
+  }
+  .form-login {
+    width: 95%;
+    margin-top: 0px !important;
+  }
+  .footer {
+    position: initial;
+    width: 99%;
+  }
+  .menu {
+    width: 99%;
+  }
+  .container-do-work {
+    margin-left: 10px;
+    width: 95%;
+  }
+  .container-option {
+    margin-left: 10px;
+    width: 95%;
+  }
 }
 
 @media (max-width: 850px) {
-    .menu {
-        width: 99%;
-    }
-    .container-do-work {
-        width: 95%;
-        margin-left: 10px;
-    }
-    .container-option {
-        margin-left: 10px;
-        width: 95%;
-    }
-    hr {
-        margin: 10px;
-    }
-    h5 {
-        margin-bottom: 5px;
-    }
+  .menu {
+    width: 99%;
+  }
+  .container-do-work {
+    width: 95%;
+    margin-left: 10px;
+  }
+  .container-option {
+    margin-left: 10px;
+    width: 95%;
+  }
+  hr {
+    margin: 10px;
+  }
+  h5 {
+    margin-bottom: 5px;
+  }
+  .dtlsEntrada {
+    display: block;
+  }
+  .datos-encabezado-imp {
+    justify-content: space-between;
+  }
+
+  table,
+  thead,
+  tr,
+  th,
+  tbody,
+  td {
+    display: block;
+    /*width: 100% !important;*/
+  }
+
+  thead {
+    display: none !important;
+  }
+
+  tbody tr {
+    box-sizing: border-box;
+    display: block;
+    padding: 5px;
+    margin: 8px 5px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 5px 18px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  tbody tr:hover {
+    background-color: transparent;
+  }
+
+  tbody td {
+    position: relative;
+    padding-left: 50%;
+    min-height: 25px;
+    text-align: right !important;
+    max-width: 100% !important;
+    padding-right: 10px;
+    border: none;
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+  td:before {
+    text-align: left;
+    position: absolute;
+    content: attr(data-head) ": ";
+    left: 0px;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-transform: capitalize;
+    font-weight: bold !important;
+  }
 }

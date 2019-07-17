@@ -105,7 +105,7 @@ function SelectedProducto(selected) {
 
 function cargar_datos_producto(producto) {
     document.getElementById('txtum').value = producto.prodUm;
-    document.getElementById('txtunitario').value = producto.prodPrecioVenta;
+    document.getElementById('txtunitario').value = producto.prodPrecioCompra;
 }
 
 function eliminar(_this, id) {
