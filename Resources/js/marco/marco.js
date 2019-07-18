@@ -10,6 +10,13 @@ const MENUS_OP = [
 
     },
     {
+        item: 'Proveedor', subItem: [
+            { name: 'Crear Proveedor', path: '../supplier/newsupplier.html' },
+            { name: 'Consultar Proveedores', path: '../supplier/lstsupplier.html' }
+
+        ]
+    },
+    {
         item: 'Entrada de almacén', subItem: [
             { name: 'Crear entrada', path: '../Entries/newentries.html' },
             { name: 'Edición entrada', path: '../Entries/lstentries.html' },
@@ -43,7 +50,7 @@ function renderizar_menus() {
             '<a>' + element.item + ' </a>' +
             '<i class="fas fa-chevron-right"></i>' +
             '</div>';
-        _html +=renderizar_sub_menu(element.item);
+        _html += renderizar_sub_menu(element.item);
 
     }
 
@@ -73,16 +80,16 @@ function activar_menu(_this, idMenu) {
         $(_this).addClass('active-option');
         $(_this).find('i').removeClass('fa-chevron-right').addClass('fa-chevron-down');
 
-       // var _html = renderizar_sub_menu(idMenu);
-       $('.' + idMenu.replace(/ /g, "")).show('linear');
-       // $(_this).after(_html);
+        // var _html = renderizar_sub_menu(idMenu);
+        $('.' + idMenu.replace(/ /g, "")).show('linear');
+        // $(_this).after(_html);
 
-       
+
     } else {
         $(_this).removeClass('active-option');
         $('.' + idMenu.replace(/ /g, "")).hide('linear');
         $(_this).find('i').removeClass('fa-chevron-down').addClass('fa-chevron-right');
-        
+
     }
 
 }
