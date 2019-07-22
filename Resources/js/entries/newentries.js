@@ -5,26 +5,29 @@ let proveedor = '',
         enProveedor: '',
         enFecha: moment().format(),
         enObservacion: '',
-        entradaDetalle: []
+        entradaDetalle: [],
+        EnUsuarioCrea: 0,
+        EnUsuarioModifica: 0
     },
     detalle = {
-        EnDetId: 0,
-        EndDetEntradaId: 0,
-        EnDetProuctoId: 0,
-        EnDetCantidad: 0,
-        EnDetVrUnit: 0,
-        EnDetPrcIva: 0,
-        EnDetVrIva: 0,
-        EnDetVrTotal: 0
-    },
-    producto = {
-        prodId: 0,
-        prodNombre: '',
-        prodUm: '',
-        prodCategoria: '',
-        prodPrecioCompra: 0,
-        cantidad: 0
-    };
+        enDetId: 0,
+        endDetEntradaId: 0,
+        enDetProuctoId: -1,
+        enDetCantidad: 0,
+        enDetVrUnit: 0,
+        enDetPrcIva: 0,
+        enDetVrIva: 0,
+        enDetVrTotal: 0,
+        enDetProucto: {
+            prodId: -1,
+            prodNombre: '',
+            prodUM: '',
+            prodCategoria: '',
+            prodPrecioCompra: 0,
+            cantidad: 0
+        }
+    }
+
 
 function proveedor_entrada() {
     encabezado.enProveedor = document.getElementById('txtproveedor').value;
@@ -37,54 +40,77 @@ function proveedor_entrada() {
 }
 
 
+function set_objeto_detalle() {
+    detalle.enDetCantidad = parseFloat(document.getElementById('txtcantidad').value);
+
+    if (isNaN(detalle.enDetCantidad)) {
+        detalle.enDetCantidad = 0;
+    }
+
+    detalle.enDetVrUnit = parseFloat(document.getElementById('txtunitario').value);
+
+    if (isNaN(detalle.enDetVrUnit)) {
+        detalle.enDetVrUnit = 0;
+    }
+
+    detalle.enDetVrTotal = detalle.enDetCantidad * detalle.enDetVrUnit;
+}
+
 function agregarProducto() {
-    producto.cantidad = parseFloat(document.getElementById('txtcantidad').value);
 
-    if (isNaN(producto.cantidad)) {
-        producto.cantidad = 0;
-    }
+    set_objeto_detalle();
 
-    if (producto.prodId != 0 && producto.cantidad > 0) {
+    if (detalle.enDetProuctoId != -1 && detalle.enDetCantidad > 0) {
         $('#modalAgregar').modal('hide');
-        nuevo_tr(producto, 0);
-        agregar_detalle_entrada(producto);
-        producto = {
-            prodId: 0,
-            prodNombre: '',
-            prodUm: '',
-            prodCategoria: '',
-            prodPrecioCompra: 0,
-            cantidad: 0
-        };
+
+        nuevo_tr(detalle);
+        agregar_detalle_entrada(detalle);
+        limpiar_modal();
     }
 
+}
+
+function limpiar_modal() {
+    document.getElementById('txtproducto').value = '';
+    document.getElementById('txtum').value = '';
+    document.getElementById('txtcantidad').value = '';
+    document.getElementById('txtunitario').value = '';
 }
 
 function agregar_detalle_entrada(producto) {
 
+    encabezado.entradaDetalle.push(producto);
 
-
-    encabezado.entradaDetalle.push({
+    detalle = {
         enDetId: 0,
         endDetEntradaId: 0,
-        enDetProuctoId: producto.prodId,
-        enDetCantidad: producto.cantidad,
-        enDetVrUnit: producto.prodPrecioCompra,
+        enDetProuctoId: -1,
+        enDetCantidad: 0,
+        enDetVrUnit: 0,
         enDetPrcIva: 0,
         enDetVrIva: 0,
-        enDetVrTotal: producto.cantidad * producto.prodPrecioCompra
-    });
+        enDetVrTotal: 0,
+        enDetProucto: {
+            prodId: -1,
+            prodNombre: '',
+            prodUM: '',
+            prodCategoria: '',
+            prodPrecioCompra: 0,
+            cantidad: 0
+        }
+
+    }
 }
 
-function nuevo_tr(producto, id) {
+function nuevo_tr(detalle) {
     let _tr = '<tr>';
-    _tr += '<td>' + producto.prodId + '</td>';
-    _tr += '<td>' + producto.prodNombre + '</td>';
-    _tr += '<td>' + producto.prodUm + '</td>';
-    _tr += '<td class="text-right">' + Number(producto.cantidad).formatMoney(decimales); + '</td>';
-    _tr += '<td class="text-right">' + Number(producto.prodPrecioCompra).formatMoney(decimales); + '</td>';
-    _tr += '<td class="text-right">' + Number(producto.cantidad * producto.prodPrecioCompra).formatMoney(decimales); + '</td>';
-    _tr += '<td class="text-center"><i class="fas fa-trash-alt" onclick="eliminar(this,' + id + ')"></td>';
+    _tr += '<td data-head="Producto">' + detalle.enDetProuctoId + '</td>';
+    _tr += '<td data-head="Descripción">' + detalle.enDetProucto.prodNombre + '</td>';
+    _tr += '<td data-head="Unidad de medida">' + detalle.enDetProucto.prodUM + '</td>';
+    _tr += '<td data-head="Cantidad" class="text-right">' + Number(detalle.enDetCantidad).formatMoney(decimales); + '</td>';
+    _tr += '<td data-head="Valor unitario" class="text-right">' + Number(detalle.enDetVrUnit).formatMoney(decimales); + '</td>';
+    _tr += '<td data-head="Valor Total	" class="text-right">' + Number(detalle.enDetVrTotal).formatMoney(decimales); + '</td>';
+    _tr += '<td data-head="Eliminar" class="text-center"><i class="fas fa-trash-alt" onclick="eliminar(this,' + detalle.enDetId + ')"></td>';
     _tr += '</tr>';
 
     if (encabezado.entradaDetalle.length == 0) {
@@ -96,15 +122,17 @@ function nuevo_tr(producto, id) {
 }
 
 function SelectedProducto(selected) {
-    producto.prodId = 0;
+    detalle.enDetProuctoId = -1;
     if (selected != undefined) {
         producto = selected;
+        detalle.enDetProucto = selected;
+        detalle.enDetProuctoId = selected.prodId;
         cargar_datos_producto(selected);
     }
 }
 
 function cargar_datos_producto(producto) {
-    document.getElementById('txtum').value = producto.prodUm;
+    document.getElementById('txtum').value = producto.prodUM;
     document.getElementById('txtunitario').value = producto.prodPrecioCompra;
 }
 
@@ -112,13 +140,11 @@ function eliminar(_this, id) {
     ConsultaAjax('EntradaDetalle', 'DELETE', function (response) {
 
         if (response.codigo == -1) {
-
-            
             Swal.fire(
                 'entrada',
                 'Error al eliminar el producto',
                 'error');
-            
+
         } else {
             $(_this).closest('tr').remove();
             Swal.fire(
@@ -138,16 +164,16 @@ function guardar_entrada() {
         ConsultaAjax('entrada', _TYPE, function (response) {
             let type = 'success';
             if (response.codigo < 0) {
-         //       type = "error";
-            }else{
+                //       type = "error";
+            } else {
                 cargar_entrada(response.codigo);
             }
             mostrar_mensaje("Se guardo los cambio correctamente", type);
-          //  
+            //  
         }, encabezado);
 
     } else {
-        mostrar_mensaje('El cambpo de proveedor y los detalles de la entrada son obligatorios', 'error');
+        mostrar_mensaje('El campo de proveedor y los detalles de la entrada son obligatorios', 'error');
     }
 }
 
@@ -179,15 +205,14 @@ function cargar_entrada(id) {
 
         for (let i = 0; i < response.entradaDetalle.length; i++) {
             const element = response.entradaDetalle[i];
-            producto = {};
-            producto.cantidad = element.enDetCantidad;
-            producto.prodId = element.enDetProuctoId;
-            producto.prodUm = element.enDetProucto.prodUm;
-            producto.prodNombre = element.enDetProucto.prodNombre;
-            producto.prodPrecioCompra = element.enDetProucto.prodPrecioCompra;
-            nuevo_tr(producto, element.enDetId);
+
+            nuevo_tr(element);
 
         }
+
+        let session = JSON.parse(localStorage.getItem("sesion-inventories-app"));
+
+        encabezado.EnUsuarioModifica = session.usuId;
     });
 }
 
@@ -196,7 +221,9 @@ function cargar_entrada(id) {
     $("#txtproducto").attr('objectField', JSON.stringify({
         key: "prodId", value: "prodNombre"
     }));
+    let session = JSON.parse(localStorage.getItem("sesion-inventories-app"));
 
+    encabezado.EnUsuarioCrea = session.usuId;
     autocomplete('txtproducto');
 
     var qs = ObtenerQueryString().id;

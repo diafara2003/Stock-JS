@@ -45,36 +45,36 @@ function renderizar_tabla(data) {
     document.getElementById('tbobydatos').innerHTML = html;
 }
 
-function aprobar(_this,identrada) {
+function aprobar(_this, identrada) {
     objeto_entrada.estado = 1;
     objeto_entrada.identrada = identrada;
 
-    cambiarEstado(_this,'Se aprobo la entrada correctamente');
+    cambiarEstado(_this, 'Se aprobo la entrada correctamente');
 }
 
-function rechazar(_this,identrada) {
+function rechazar(_this, identrada) {
     objeto_entrada.estado = -1;
     objeto_entrada.identrada = identrada;
 
-    cambiarEstado(_this,'Se rechazo la entrada correctamente');
+    cambiarEstado(_this, 'Se rechazo la entrada correctamente');
 }
 
 
-function cambiarEstado(_this,msn) {
-    ConsultaAjax('entrada/cambiarEstado','PUT',function (response) {
+function cambiarEstado(_this, msn) {
+    ConsultaAjax('entrada/cambiarEstado', 'PUT', function (response) {
         if (response.codigo == -1) {
             Swal.fire(
                 'Aprobar entrada',
-               response.mensaje,
+                response.mensaje,
                 'error');
         } else {
             $(_this).closest('tr').remove();
             Swal.fire(
                 'Aprobar entrada',
-               msn ,
+                msn,
                 'success');
         }
-    },objeto_entrada);
+    }, objeto_entrada);
 }
 
 function imprimir_entrada() {

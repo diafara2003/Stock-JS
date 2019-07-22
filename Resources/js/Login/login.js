@@ -10,6 +10,7 @@ function validarDatos(e) {
             'los campos de usuario y contraseña son obligatorios',
             'error')
     } else {
+        return;
         ConsultaAjaxLogin(`usuario/validar?user=${usuario}&password=${password}`, 'GET', function (response) {
             if (response != undefined && response.usuId == 0) {
                 Swal.fire(
@@ -19,7 +20,7 @@ function validarDatos(e) {
             }
             else {
                 localStorage.setItem("sesion-inventories-app", Generar_objeto_sesion(response));
-                window.location.href = window.location.href.split('Views')[0] + '/Views/marco/inicio.html';
+                window.location.href = window.location.href.split('Views')[0] + 'Views/marco/inicio.html';
             }
         });
     }
