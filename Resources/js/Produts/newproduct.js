@@ -1,7 +1,7 @@
 let producto = {
     prodId: 0,
     prodNombre: '',
-    prodUm: '',
+    prodUM: '',
     prodCategoria: '',
     prodPrecioCompra: 0,
     prodPrecioVenta: 0
@@ -60,7 +60,7 @@ function cargar_producto(id) {
         producto = response;
 
         document.getElementById('txtnombre').value = producto.prodNombre;
-        document.getElementById('txtum').value = producto.prodUm;
+        document.getElementById('txtum').value = producto.prodUM;
         document.getElementById('txtcategoria').value = producto.prodCategoria;
         document.getElementById('txtcompra').value = producto.prodPrecioCompra;
         document.getElementById('txtventa').value = producto.prodPrecioVenta;
@@ -70,7 +70,7 @@ function cargar_producto(id) {
 
 function obtener_campos() {
     producto.prodNombre = document.getElementById('txtnombre').value;
-    producto.prodUm = document.getElementById('txtum').value;
+    producto.prodUM = document.getElementById('txtum').value;
     producto.prodCategoria = document.getElementById('txtcategoria').value;
     producto.prodPrecioCompra = parseFloat(document.getElementById('txtcompra').value);
     producto.prodPrecioVenta = parseFloat(document.getElementById('txtventa').value);
@@ -87,7 +87,7 @@ function validar_campos() {
     }
 
     if (producto.prodNombre == ''
-        || producto.prodUm == ''
+        || producto.prodUM == ''
         || producto.prodCategoria == ''
         || producto.prodPrecioCompra == 0
         || producto.prodPrecioVenta == 0) {

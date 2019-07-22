@@ -22,7 +22,7 @@ function renderizar_tabla(data) {
         html += '<tr>';
         html += '<td><a  onclick="editar(' + element.prodId + ')">' + element.prodId + '</a></td>';
         html += '<td>' + element.prodNombre + '</td>';
-        html += '<td>' + element.prodUm + '</td>';
+        html += '<td>' + element.prodUM + '</td>';
         html += '<td>' + element.prodCategoria + '</td>';
         html += '<td class="text-right">' +Number(element.prodPrecioCompra).formatMoney(decimales); + '</td>';
         html += '<td class="text-right">' + Number(element.prodPrecioVenta).formatMoney(decimales); + '</td>';
