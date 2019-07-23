@@ -49,14 +49,14 @@ function aprobar(_this, identrada) {
     objeto_entrada.estado = 1;
     objeto_entrada.identrada = identrada;
 
-    cambiarEstado(_this, 'Se aprobo la entrada correctamente');
+    cambiarEstado(_this, 'Se aprobó la entrada correctamente');
 }
 
 function rechazar(_this, identrada) {
     objeto_entrada.estado = -1;
     objeto_entrada.identrada = identrada;
 
-    cambiarEstado(_this, 'Se rechazo la entrada correctamente');
+    cambiarEstado(_this, 'Se rechazó la entrada correctamente');
 }
 
 
@@ -78,7 +78,8 @@ function cambiarEstado(_this, msn) {
 }
 
 function imprimir_entrada() {
-
+    var url = window.location.href.split('#')[0].split('Entries')[0] + 'Entries/print.html?idea=-1';
+    var imp = window.open(url, "", "width=880,height=780,status=no,toolbar=no,menubar=no,scrollbars=yes,resizable=no,left=0,top=5");
 }
 
 (function () {

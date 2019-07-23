@@ -112,12 +112,17 @@ function nuevo_tr(detalle) {
     _tr += '<td data-head="Valor Total	" class="text-right">' + Number(detalle.enDetVrTotal).formatMoney(decimales); + '</td>';
     _tr += '<td data-head="Eliminar" class="text-center"><i class="fas fa-trash-alt" onclick="eliminar(this,' + detalle.enDetId + ')"></td>';
     _tr += '</tr>';
+    $('#tbodydatos').append(_tr);
 
-    if (encabezado.entradaDetalle.length == 0) {
-        document.getElementById('tbodydatos').innerHTML = _tr;
-    } else {
-        $('#tbodydatos').append(_tr);
+    if ($('.sin-registro').length > 0) {
+        $('.sin-registro').remove();
     }
+
+    // if (encabezado.entradaDetalle.length == 0) {
+    //     document.getElementById('tbodydatos').innerHTML = _tr;
+    // } else {
+    //     $('#tbodydatos').append(_tr);
+    // }
 
 }
 
@@ -184,6 +189,10 @@ function validar_datos_obligatorio() {
         result = true;
     }
 
+    if (encabezado.enId > 0) {
+        result = true;
+    }
+
     return result;
 }
 
@@ -198,6 +207,7 @@ function mostrar_mensaje(msn, type) {
 function cargar_entrada(id) {
     ConsultaAjax('entrada/' + id, 'GET', function (response) {
         encabezado = response;
+        //
 
         document.getElementById('tbodydatos').innerHTML = "";
         $('#txtproveedor').removeClass('obligatorio');
@@ -209,7 +219,7 @@ function cargar_entrada(id) {
             nuevo_tr(element);
 
         }
-
+        encabezado.entradaDetalle = [];
         let session = JSON.parse(localStorage.getItem("sesion-inventories-app"));
 
         encabezado.EnUsuarioModifica = session.usuId;
@@ -230,7 +240,7 @@ function cargar_entrada(id) {
 
     if (qs != undefined) {
         is_edicion = true;
-        document.getElementById('tipopagina').textContent = "Editar producto";
+        document.getElementById('tipopagina').textContent = "Editar entrada";
         cargar_entrada(qs);
     }
 

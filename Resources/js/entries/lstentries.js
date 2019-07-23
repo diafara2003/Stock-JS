@@ -1,7 +1,7 @@
 
 function consultar_entradas() {
 
-    ConsultaAjax('entrada/Estado/0', 'GET', function (response) {
+    ConsultaAjax('entrada/Estado/-1', 'GET', function (response) {
         if (response.length > 0) {
             renderizar_tabla(response);
         } else {
@@ -17,18 +17,18 @@ function renderizar_tabla(data) {
         const element = data[i];
 
         html += '<tr>';
-        html += '<td><a onclick="ver_entrada(' + element.enId + ')">' + element.enId + '</a></td>';
-        html += '<td>' + element.enProveedor + '</td>';
-        html += '<td>' + moment(element.enFecha).format("DD/MM/YYYY") + '</td>';
+        html += '<td data-head="Código"><a onclick="ver_entrada(' + element.enId + ')">' + element.enId + '</a></td>';
+        html += '<td data-head="Proveedor">' + element.enProveedor + '</td>';
+        html += '<td data-head="Fecha">' + moment(element.enFecha).format("DD/MM/YYYY") + '</td>';
         if (element.enObservacion == '') {
-            html += '<td>Sin comentarios</td>';
+            html += '<td data-head="Observaciones">Sin comentarios</td>';
         } else {
-            html += '<td>' + element.enObservacion + '</td>';
+            html += '<td data-head="Observaciones">' + element.enObservacion + '</td>';
         }
 
-        html += '<td>' + html_estado(element.enEstado) + '</td>';
+        html += '<td data-head="Estado">' + html_estado(element.enEstado) + '</td>';
 
-        html += '<td class="text-center"><i class="fas fa-trash-alt" onclick="eliminar(this,' + element.enId + ')"></i></td>';
+        html += '<td data-head="Eliminar" class="text-center"><i class="fas fa-trash-alt" onclick="eliminar(this,' + element.enId + ')"></i> <i class="fas fa-print" onclick="imprimir_entrada('+element.enId + ')"></i></td>';
         html += '</td>';
     }
 
@@ -69,6 +69,12 @@ function eliminar(_td, id) {
     _this = $(_td).closest('tr');
     eliminar_entrada = id;
     $('#modaleliminar').modal('show');
+}
+
+
+function imprimir_entrada(id) {
+    var url = window.location.href.split('#')[0].split('Entries')[0] + 'Entries/print.html?idea='+id;
+    var imp = window.open(url, "", "width=880,height=780,status=no,toolbar=no,menubar=no,scrollbars=yes,resizable=no,left=0,top=5");
 }
 function confirmarEliminar() {
     ConsultaAjax('entrada', 'DELETE', function (response) {
