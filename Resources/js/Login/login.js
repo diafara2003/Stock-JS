@@ -10,7 +10,7 @@ function validarDatos(e) {
             'los campos de usuario y contraseña son obligatorios',
             'error')
     } else {
-        return;
+        
         ConsultaAjaxLogin(`usuario/validar?user=${usuario}&password=${password}`, 'GET', function (response) {
             if (response != undefined && response.usuId == 0) {
                 Swal.fire(

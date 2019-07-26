@@ -45,31 +45,32 @@
         <div class="container-do-work row">
 
             <h5 id="tipopagina">Nuevo proveedor</h5>
+            <span>Todos los campos son obligatorios</span>
             <hr />
             <div class="shadow formulario">
                 <form>
                     <div class="row">
                         <div class="six columns">
                             <label for="txtnombre">Nombre</label>
-                            <input class="u-full-width" type="text" placeholder="Nombre" id="txtnombre">
+                            <input class="u-full-width" type="text" placeholder="Nombre" id="txtterNombre">
                         </div>
                         <div class="six columns">
                             <label for="txtum">NIT</label>
-                            <input class="u-full-width" type="text" placeholder="NIT" id="txtum">
+                            <input class="u-full-width" type="number" maxlength="10" placeholder="NIT" id="txtTerNIT">
                         </div>
                     </div>
                     <div class="row">
                         <div class="six columns">
                             <label for="txtnombre">Dirección</label>
-                            <input class="u-full-width" type="text" placeholder="direccion" id="txtnombre">
+                            <input class="u-full-width" type="text" placeholder="direccion" id="txtterDireccion">
                         </div>
                         <div class="two columns">
                             <label for="txtum">Telefono</label>
-                            <input class="u-full-width" type="text" placeholder="telefono" id="txtum">
+                            <input class="u-full-width" type="number" max="15" placeholder="telefono" id="txtterTelefono">
                         </div>
                         <div class="four columns">
                             <label for="txtum">Correo electronico</label>
-                            <input class="u-full-width" type="text" placeholder="correo electronico" id="txtum">
+                            <input class="u-full-width" type="email" placeholder="correo electronico" id="txtterCorreo">
                         </div>
                     </div>
 
@@ -94,6 +95,8 @@
     <script src="../../Resources/js/Login/header.js"></script>
     <script src="../../Resources/js/marco/marco.js"></script>
     <script src="../../Resources/js/commons/moment.js"></script>
+    <script src="../../Resources/js/commons/inventories-plugin.js"></script>
+    <script src="../../Resources/js/supplier/newsupplier.js"></script>
 
 </body>
 
