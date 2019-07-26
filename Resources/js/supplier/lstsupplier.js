@@ -57,16 +57,17 @@ function confirmarEliminar() {
 
         if (response.codigo == -1) {
             eliminar_producto = undefined;
-            _this.remove();
+           
             Swal.fire(
                 'Proveedor',
                 'Error al crear el proveedor',
                 'error');
             _this = undefined;
         } else {
+            _this.remove();
             Swal.fire(
                 'Proveedor',
-                'Se registro el proveedor correctamente',
+                'Se elimino el proveedor correctamente',
                 'success');
         }
 
