@@ -18,7 +18,7 @@ function renderizar_tabla(data) {
 
         html += '<tr>';
         html += '<td data-head="Código"><a onclick="ver_entrada(' + element.enId + ')">' + element.enId + '</a></td>';
-        html += '<td data-head="Proveedor">' + element.enProveedor + '</td>';
+        html += '<td data-head="Proveedor">' + element.terceroEntrad.terNombre + '</td>';
         html += '<td data-head="Fecha">' + moment(element.enFecha).format("DD/MM/YYYY") + '</td>';
         if (element.enObservacion == '') {
             html += '<td data-head="Observaciones">Sin comentarios</td>';
