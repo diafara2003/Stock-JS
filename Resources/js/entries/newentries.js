@@ -2,7 +2,7 @@ let proveedor = '',
     is_edicion = false,
     productos = [],
     encabezado = {
-        enProveedor: '',
+        enProveedor: -1,
         enFecha: moment().format(),
         enObservacion: '',
         entradaDetalle: [],
@@ -28,6 +28,14 @@ let proveedor = '',
         }
     }
 
+
+function Selectedercero(selected) {
+    encabezado.enProveedor = -1;
+    if (selected != undefined) {
+        producto = selected;
+        encabezado.enProveedor = selected.terId;
+    }
+}
 
 function proveedor_entrada() {
     encabezado.enProveedor = document.getElementById('txtproveedor').value;
@@ -226,15 +234,35 @@ function cargar_entrada(id) {
     });
 }
 
+function add_comentario() {
+    
+    Swal.fire({
+        input: 'textarea',
+        inputPlaceholder: 'Ingrese comentarios para la entrada',
+        confirmButtonText:'Agregar Comentario',
+        width:'600px',
+        showCancelButton: false
+    }).then((result) => {
+        encabezado.enObservacion=result.value;
+    });
+
+  
+}
+
 (function () {
 
     $("#txtproducto").attr('objectField', JSON.stringify({
         key: "prodId", value: "prodNombre"
     }));
+
+    $("#txtproveedor").attr('objectField', JSON.stringify({
+        key: "terId", value: "terNombre"
+    }));
     let session = JSON.parse(localStorage.getItem("sesion-inventories-app"));
 
     encabezado.EnUsuarioCrea = session.usuId;
     autocomplete('txtproducto');
+    autocomplete('txtproveedor');
 
     var qs = ObtenerQueryString().id;
 
