@@ -181,7 +181,7 @@ function guardar_entrada() {
             } else {
                 cargar_entrada(response.codigo);
             }
-            mostrar_mensaje("Se guardo los cambio correctamente", type);
+            mostrar_mensaje("Se guardó los cambio correctamente", type);
             //  
         }, encabezado);
 
@@ -207,19 +207,21 @@ function validar_datos_obligatorio() {
 function mostrar_mensaje(msn, type) {
 
     Swal.fire(
-        'Creación de entrada',
+        'Entrada de almacén',
         msn,
         type)
 }
 
 function cargar_entrada(id) {
+    $('#txtproveedor').attr('disabled','disabled');
+    $('#txtproveedor').css('background-color','#ebebeb');
     ConsultaAjax('entrada/' + id, 'GET', function (response) {
         encabezado = response;
         //
 
         document.getElementById('tbodydatos').innerHTML = "";
         $('#txtproveedor').removeClass('obligatorio');
-        document.getElementById('txtproveedor').value = response.enProveedor;
+        document.getElementById('txtproveedor').value = response.terceroEntrada.terNombre ;
 
         for (let i = 0; i < response.entradaDetalle.length; i++) {
             const element = response.entradaDetalle[i];

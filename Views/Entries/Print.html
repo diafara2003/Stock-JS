@@ -39,17 +39,18 @@
         }
 
 
-        .dtlsEntrada, .totales-impresion {
+        .dtlsEntrada,
+        .totales-impresion {
             display: flex;
             padding: 5px 10px 5px 10px;
             justify-content: space-between;
         }
 
-        .totales-impresion{
+        .totales-impresion {
             justify-content: flex-end;
         }
 
-        .totales-impresion span{
+        .totales-impresion span {
             margin-right: 10px;
         }
 
@@ -77,11 +78,11 @@
 
                     <div class="datos-encabezado-imp">
                         <label class="Titleblack">Fecha</label>
-                        <span id="EnAFech">17/07/2019</span>
+                        <span id="EnAFech"></span>
                     </div>
                     <div class="datos-encabezado-imp">
                         <label class="title-negrilla">Usuario</label>
-                        <span id="EnAUsu">Jhonnatan andres urueña diaz</span>
+                        <span id="EnAUsu"></span>
                     </div>
 
 
@@ -89,7 +90,7 @@
                 <div>
                     <div class="datos-encabezado-imp">
                         <label class="Titleblack">ENTRADA DE ALMACÉN NO.</label>
-                        <span id="EnANo">1</span>
+                        <span id="EnANo"></span>
                     </div>
 
                 </div>
@@ -104,21 +105,21 @@
                 <div>
                     <div class="datos-encabezado-imp">
                         <label>Proveedor</label>
-                        <span id="TerNom">Agos S.A.S</span>
+                        <span id="TerNom"></span>
                     </div>
                     <div class="datos-encabezado-imp">
                         <label idioma class="title-negrilla">NIT</label>
-                        <span id="TerNit">12312312</span>
+                        <span id="TerNit"></span>
                     </div>
                 </div>
                 <div>
                     <div class="datos-encabezado-imp">
                         <label>Dirección</label>
-                        <span id="TerDic">Calle 77 a sur no 14-24 int 1</span>
+                        <span id="TerDic"></span>
                     </div>
                     <div class="datos-encabezado-imp">
                         <label>Teléfono</label>
-                        <span id="TerTel">314-266-6088</span>
+                        <span id="TerTel"></span>
                     </div>
                 </div>
             </div>
@@ -137,23 +138,8 @@
                     <th class="text-right">Valor Total</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td data-head="código">1</td>
-                    <td data-head="Descripción">Queso</td>
-                    <td data-head="U.M">Paquete</td>
-                    <td class="text-right" data-head="Cantidad">2</td>
-                    <td class="text-right" data-head="valor unitario">5.000</td>
-                    <td class="text-right" data-head="valor total">10.000</td>
-                </tr>
-                <tr>
-                    <td data-head="código">1</td>
-                    <td data-head="Descripción">Queso</td>
-                    <td data-head="U.M">Paquete</td>
-                    <td class="text-right" data-head="Cantidad">2</td>
-                    <td class="text-right" data-head="valor unitario">5.000</td>
-                    <td class="text-right" data-head="valor total">10.000</td>
-                </tr>
+            <tbody id="tbodyDatos">
+
             </tbody>
         </table>
     </section>
@@ -162,15 +148,15 @@
         <div class="totales-impresion">
             <div class="datos-encabezado-imp">
                 <label>Subtotal:</label>
-                <span>10,000</span>
+                <span id="lblSubtotal"></span>
             </div>
             <div class="datos-encabezado-imp">
                 <label>IVA:</label>
-                <span>0</span>
+                <span id="lblIVA"></span>
             </div>
             <div class="datos-encabezado-imp">
                 <label>Total:</label>
-                <span>10,000</span>
+                <span id="lblTotal"></span>
             </div>
 
         </div>
@@ -180,6 +166,7 @@
 
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="../../Resources/js/commons/moment.js"></script>
+    <script src="../../Resources/js/commons/inventories-plugin.js"></script>
     <script src="../../Resources/js/entries/print.js"></script>
 
 </body>
