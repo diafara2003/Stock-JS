@@ -77,8 +77,8 @@ function cambiarEstado(_this, msn) {
     }, objeto_entrada);
 }
 
-function imprimir_entrada() {
-    var url = window.location.href.split('#')[0].split('Entries')[0] + 'Entries/print.html?idea=-1';
+function imprimir_entrada(id_ea) {
+    var url = window.location.href.split('#')[0].split('Entries')[0] + 'Entries/print.html?idea='+id_ea;
     var imp = window.open(url, "", "width=880,height=780,status=no,toolbar=no,menubar=no,scrollbars=yes,resizable=no,left=0,top=5");
 }
 
